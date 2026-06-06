@@ -5,7 +5,12 @@
       "PowerShell(head *)",
       "WebFetch(domain:www.indiamart.com)",
       "Bash(timeout 240 npm run build)",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(cat vite.config.ts)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Configure GitHub Pages deployment *)",
+      "Bash(git push *)"
     ]
   }
 }
