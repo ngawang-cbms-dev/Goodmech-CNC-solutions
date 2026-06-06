@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "PowerShell(head *)",
+      "WebFetch(domain:www.indiamart.com)",
+      "Bash(timeout 240 npm run build)",
+      "Bash(echo \"EXIT: $?\")"
+    ]
+  }
+}
