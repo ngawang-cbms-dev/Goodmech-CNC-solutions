@@ -6,6 +6,8 @@ import App from './App.tsx'
 import { Home } from './pages/Home'
 import { Machines } from './pages/Machines'
 import { Software } from './pages/Software'
+import { CAE } from './pages/CAE'
+import { Printers } from './pages/Printers'
 import { Quote } from './pages/Quote'
 
 createRoot(document.getElementById('root')!).render(
@@ -16,6 +18,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<Home />} />
           <Route path="/machines" element={<Machines />} />
           <Route path="/software" element={<Software />} />
+          <Route path="/cae" element={<CAE />} />
+          <Route path="/printers" element={<Printers />} />
           <Route path="/quote" element={<Quote />} />
         </Route>
       </Routes>

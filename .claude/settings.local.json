@@ -10,7 +10,8 @@
       "Bash(git remote *)",
       "Bash(git add *)",
       "Bash(git commit -q -m 'Configure GitHub Pages deployment *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(gh run *)"
     ]
   }
 }
