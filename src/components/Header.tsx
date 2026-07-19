@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-/** Brand logo — the goodmech image sits on a white badge so it reads cleanly
- *  over both the dark transparent-hero header and the solid scrolled header.
- *  TODO(client): swap for a transparent-background PNG/SVG when available. */
+/** Precision machined logo mark — wordmark inherits currentColor so it adapts
+ *  to the transparent (over-hero) and solid header states. */
 const LogoMark: React.FC = () => (
-  <span className="inline-flex items-center bg-white rounded-md px-2.5 py-1.5 shadow-sm border border-black/5">
-    <img src="miscellounes/logo.jpeg" alt="Goodmech CNC Solutions" className="h-7 w-auto object-contain" />
+  <span className="flex items-center gap-2.5">
+    <span className="relative grid place-items-center w-9 h-9 rounded-lg bg-safety-orange shadow-[0_6px_16px_-6px_rgba(255,107,0,0.7)]">
+      <span className="absolute inset-[6px] border-[1.6px] border-white/85 rounded-[3px]" />
+      <span className="w-1.5 h-1.5 rounded-full bg-white" />
+    </span>
+    <span className="flex flex-col leading-none">
+      <span className="font-headline-md text-[19px] font-bold tracking-tight">GOODMECH</span>
+      <span className="font-label-caps text-[9px] opacity-70 mt-0.5">CNC&nbsp;SOLUTIONS</span>
+    </span>
   </span>
 );
 
@@ -43,9 +49,8 @@ export const Header: React.FC = () => {
 
   const navLinks = [
     { to: '/machines', label: 'CNC Machines', match: '/machines' },
-    { to: '/software', label: 'CAD/CAM Software', match: '/software' },
-    { to: '/cae', label: 'CAE/Simulation Software', match: '/cae' },
-    { to: '/printers', label: '3D Printers - Go3D', match: '/printers' },
+    { to: '/software', label: 'Software', match: '/software' },
+    { to: '/software#gauging', label: 'Gauging Systems', match: '' },
     { to: '/#services', label: 'Services', match: '' },
     { to: '/#about', label: 'About', match: '' },
   ];
@@ -69,7 +74,7 @@ export const Header: React.FC = () => {
     >
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         {/* Logo */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-10">
           <Link
             to="/"
             aria-label="Goodmech CNC Solutions — home"
@@ -79,7 +84,7 @@ export const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex gap-5 xl:gap-6">
+          <nav className="hidden lg:flex gap-7">
             {navLinks.map((l) => (
               <Link key={l.label} to={l.to} className={navLinkClass(l.match)}>
                 {l.label}

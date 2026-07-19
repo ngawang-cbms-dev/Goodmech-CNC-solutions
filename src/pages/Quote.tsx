@@ -121,12 +121,11 @@ export const Quote: React.FC = () => {
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                     >
-                      <option value="">Select a product category</option>
-                      <option>Grinding Machines</option>
-                      <option>Turning Machines</option>
-                      <option>CAD/CAM Software</option>
-                      <option>CAE/Simulation Software</option>
-                      <option>3D Printers - Go3D</option>
+                      <option value="">Select a CNC Machine Category</option>
+                      <option>CNC Lathes (Horizontal/Vertical)</option>
+                      <option>VMC Machining Centers</option>
+                      <option>Laser Gauging Systems</option>
+                      <option>CAD/CAM Software Integration</option>
                       <option>Custom Tooling Solutions</option>
                     </select>
                   </div>
@@ -220,8 +219,8 @@ export const Quote: React.FC = () => {
               <h4 className="font-label-caps text-on-surface-variant mb-4">CERTIFICATIONS</h4>
               <div className="space-y-3">
                 {[
-                  { icon: 'verified', label: '27 Years of Experience' },
-                  { icon: 'precision_manufacturing', label: 'Authorized WIDMA Dealer' },
+                  { icon: 'verified', label: 'ISO 9001:2015' },
+                  { icon: 'precision_manufacturing', label: 'Precision Grade AA' },
                   { icon: 'support_agent', label: '24/7 Tech Support' },
                 ].map((c, i, arr) => (
                   <div
