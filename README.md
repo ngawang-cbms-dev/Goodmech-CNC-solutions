@@ -4,21 +4,6 @@ A modern, responsive website for GoodMech CNC Solutions built with React, TypeSc
 
 ## Setup & Configuration
 
-### Environment Variables
-
-The project requires Stitch MCP Server credentials for backend connectivity:
-
-1. **Create `.env` file** in the project root:
-   ```
-   VITE_STITCH_API_KEY=your_api_key_here
-   VITE_PROJECT_NAME=GoodMech CNC Solutions
-   VITE_API_ENDPOINT=https://stitch.mongodb.com/api/client/v2.0/app
-   ```
-
-2. **Do NOT commit** `.env` to version control (already in `.gitignore`)
-
-3. **Use `.env.example`** as a template for other developers
-
 ### VSCode Configuration
 
 The project includes VSCode settings for:
@@ -67,32 +52,14 @@ Access the application in your browser and navigate through:
 - **Software** - CAD/CAM solutions (VISI, Edgecam, WorkNC)
 - **Quote** - Technical support and request form
 
-## Project Structure
-
-```
-src/
-├── pages/
-│   ├── Home.tsx          # Landing page with hero & core expertise
-│   ├── Machines.tsx      # CNC machinery product showcase
-│   ├── Software.tsx      # CAD/CAM & metrology solutions
-│   └── Quote.tsx         # Quote request form
-├── components/
-│   ├── Header.tsx        # Navigation header with Logo
-│   └── Footer.tsx        # Footer with links & contact
-├── App.tsx               # Main layout with React Router
-├── main.tsx              # App entry point & route definitions
-├── index.css             # Global styles
-└── assets/               # Images, SVGs, icons
-```
-
 ## Technology Stack
 
 - **Frontend Framework:** React 19.2.6
 - **Build Tool:** Vite 8.0.12
 - **Language:** TypeScript 6.0.2
 - **Styling:** Tailwind CSS 4.3.0
-- **Routing:** React Router 6.x
-- **Linting:** ESLint 10.3.0 + TypeScript ESLint
+- **Routing:** React Router 7.x
+- **Linting:** ESLint 10.3.0 + TypeScript ESLint 8.59.2
 
 ## Routing
 
@@ -169,48 +136,4 @@ To deploy this site:
 
 **GoodMech CNC Solutions**  
 Industrial Estate, Phagwara, Punjab - 144401, India  
-Focal Point, Kapurthala, Punjab - 144601, India  
-📧 sales@goodmech.com
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Focal Point, Kapurthala, Punjab - 144601, India - sales@goodmech.com
