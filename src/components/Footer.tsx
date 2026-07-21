@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
           <div className="text-body-sm font-body-sm text-white/60 space-y-4">
             <div className="flex items-start gap-2.5">
               <span className="material-symbols-outlined text-[18px] mt-0.5 text-white/40">location_on</span>
-              <span>Industrial Estate, Phagwara,<br />Punjab - 144401</span>
+              <span>Ludhiana,<br />Punjab - 144401</span>
             </div>
             <div className="flex items-start gap-2.5">
               <span className="material-symbols-outlined text-[18px] mt-0.5 text-white/40">location_on</span>

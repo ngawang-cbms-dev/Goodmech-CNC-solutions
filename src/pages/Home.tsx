@@ -73,7 +73,7 @@ export const Home: React.FC = () => {
             <h1 className="anim-in text-headline-xl font-headline-xl text-white mb-6" style={{ animationDelay: '150ms' }}>
               Precision, reliability &amp;{' '}
               <span className="relative whitespace-nowrap">
-                <span className="text-gradient bg-[linear-gradient(110deg,#fff_20%,var(--color-safety-orange))]">
+                <span className="text-gradient bg-[linear-gradient(110deg,#fff_55%,var(--color-safety-orange))]">
                   cutting-edge
                 </span>
               </span>{' '}
@@ -81,7 +81,7 @@ export const Home: React.FC = () => {
             </h1>
 
             <p className="anim-in text-body-lg font-body-lg text-white/70 mb-9 max-w-xl" style={{ animationDelay: '240ms' }}>
-              Goodmech CNC Solutions delivers Punjab's most reliable industrial engineering systems —
+              Goodmech CNC Solutions delivers North India's most reliable industrial engineering systems —
               from precision Widma machines to advanced CAD/CAM, CAE simulation and 3D printing. Established in{' '}
               {companyInfo.established}.
             </p>
@@ -133,7 +133,7 @@ export const Home: React.FC = () => {
         <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant">
           {[
             { icon: 'verified', big: '27 Years', small: 'Of Experience' },
-            { icon: 'location_on', big: 'Punjab, India', small: 'Phagwara & Kapurthala HQ' },
+            { icon: 'location_on', big: 'Punjab, India', small: 'Phagwara & Ludhiana HQ' },
             { icon: 'engineering', big: 'Complete Support', small: 'From Installation to CAM' },
           ].map((item, i) => (
             <div

@@ -7,7 +7,7 @@ const categories: ShowcaseCategory[] = [
     id: 'grinding',
     icon: 'settings_input_component',
     label: 'Grinding Machines',
-    title: 'Grinding Machines',
+    title: 'Tool Grinding Machines',
     blurb:
       'Ultra-precision 5-axis tool & cutter grinding solutions from Widma for tools, dies, and precision components with sub-micron accuracy.',
     products: GrindingMachines,
