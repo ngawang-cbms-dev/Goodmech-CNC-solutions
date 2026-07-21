@@ -42,11 +42,11 @@ export const companyInfo = {
   details: {
     nature: "Trader - Wholesaler/Distributor",
     employees: "Upto 10 People",
-    certification: "ISO 9001:2015"
+    certification: "Authorized WIDMA (Kennametal) Dealer"
   },
 
   // About text
-  about: `Goodmech CNC Solutions, established in 2022 in Phagwara, Punjab, is a trusted wholesaler of high-performance CNC Vertical Machining Centers, CNC Grinding Machines, and Top Gauge Absolute systems. 
+  about: `Goodmech CNC Solutions, based in Phagwara, Punjab, is a trusted dealer of WIDMA (Kennametal) CNC grinding & turning machines, world-class CAD/CAM and CAE simulation software, and Go3D 3D printers, backed by 27 years of industry experience.
 
 We are committed to delivering precision, reliability, and cutting-edge technology to meet the evolving needs of the manufacturing industry. With a focus on quality and customer satisfaction, we serve a wide range of industrial clients across India.
 
@@ -55,13 +55,13 @@ Partner with us for advanced CNC solutions that drive productivity and innovatio
   // Key values
   values: [
     {
-      title: "13+ Years Experience",
+      title: "27 Years Experience",
       description: "Industry expertise and proven track record",
       icon: "verified"
     },
     {
-      title: "ISO 9001:2015 Certified",
-      description: "Committed to quality and excellence",
+      title: "Authorized WIDMA Dealer",
+      description: "Genuine Kennametal-WIDMA machines & support",
       icon: "badge"
     },
     {
@@ -78,8 +78,8 @@ Partner with us for advanced CNC solutions that drive productivity and innovatio
 
   // Certifications
   certifications: [
-    "ISO 9001:2015",
-    "Precision Grade AA",
+    "27 Years of Experience",
+    "Authorized WIDMA Dealer",
     "24/7 Tech Support"
   ]
 };

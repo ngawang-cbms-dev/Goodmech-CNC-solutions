@@ -24,12 +24,13 @@ export const Home: React.FC = () => {
   };
 
   const partners = [
-    { name: 'COSMOS', tag: 'VMC Centers' },
-    { name: 'WIDMA', tag: 'Grinding Tech' },
-    { name: 'BALANCE', tag: 'Gauging Systems' },
+    { name: 'WIDMA', tag: 'Machining & Grinding' },
     { name: 'VISI', tag: 'CAD/CAM Software' },
     { name: 'WORKNC', tag: 'Toolpaths' },
     { name: 'EDGECAM', tag: 'NC Programming' },
+    { name: 'ESPRIT', tag: 'Mill-Turn CAM' },
+    { name: 'SIMUFACT', tag: 'CAE Simulation' },
+    { name: 'GO3D', tag: '3D Printers' },
   ];
 
   return (
@@ -66,7 +67,7 @@ export const Home: React.FC = () => {
               style={{ animationDelay: '60ms' }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-glow-pulse"></span>
-              ISO 9001:2015 CERTIFIED
+              27 YEARS OF EXPERIENCE
             </span>
 
             <h1 className="anim-in text-headline-xl font-headline-xl text-white mb-6" style={{ animationDelay: '150ms' }}>
@@ -81,7 +82,7 @@ export const Home: React.FC = () => {
 
             <p className="anim-in text-body-lg font-body-lg text-white/70 mb-9 max-w-xl" style={{ animationDelay: '240ms' }}>
               Goodmech CNC Solutions delivers Punjab's most reliable industrial engineering systems —
-              from vertical machining centers to advanced CAM software integrations. Established in{' '}
+              from precision Widma machines to advanced CAD/CAM, CAE simulation and 3D printing. Established in{' '}
               {companyInfo.established}.
             </p>
 
@@ -131,7 +132,7 @@ export const Home: React.FC = () => {
       <section className="bg-surface-container-lowest border-b border-outline-variant" id="about">
         <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant">
           {[
-            { icon: 'verified', big: '13+ Years', small: 'Industry Expertise' },
+            { icon: 'verified', big: '27 Years', small: 'Of Experience' },
             { icon: 'location_on', big: 'Punjab, India', small: 'Phagwara & Kapurthala HQ' },
             { icon: 'engineering', big: 'Complete Support', small: 'From Installation to CAM' },
           ].map((item, i) => (
@@ -159,27 +160,27 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-          {/* VMC Centers */}
+          {/* CNC Turning */}
           <div
             className="reveal md:col-span-8 bg-surface-container-lowest border border-outline-variant p-8 rounded-2xl flex flex-col justify-between group hover-lift overflow-hidden"
             style={delay(0)}
           >
             <div>
               <div className="flex justify-between items-start mb-8">
-                <span className="material-symbols-outlined text-safety-orange text-4xl">precision_manufacturing</span>
+                <span className="material-symbols-outlined text-safety-orange text-4xl">rotate_right</span>
                 <span className="font-label-caps text-on-secondary-container bg-secondary-container px-3 py-1.5 rounded-full">
                   MOST POPULAR
                 </span>
               </div>
               <h3 className="text-headline-md font-headline-md text-on-surface mb-4">
-                CNC Vertical Machining Centers
+                Widma CNC Turning Machines
               </h3>
               <p className="text-body-md font-body-md text-on-surface-variant mb-6 max-w-md">
-                High-precision VMC machines designed for extreme accuracy and heavy-duty manufacturing.
-                Featuring advanced spindle technology and robust casting.
+                Heavy-duty vertical turning lathes and special-purpose machines for large-diameter, high-precision
+                components — engineered for demanding production environments.
               </p>
               <ul className="space-y-2.5 mb-8">
-                {['Superior damping characteristics', 'High-speed tool changers', 'Integrated safety enclosures'].map(
+                {['Capacity up to 4,000 mm diameter', 'Rigid cast-iron construction', 'Custom special-purpose builds'].map(
                   (f) => (
                     <li key={f} className="flex items-center gap-2.5 text-body-sm font-body-sm text-on-surface">
                       <span className="material-symbols-outlined text-tech-blue text-[18px]">check_circle</span>
@@ -191,7 +192,7 @@ export const Home: React.FC = () => {
             </div>
             <div className="relative h-64 w-full rounded-xl overflow-hidden">
               <img
-                alt="VMC Machine Detail"
+                alt="CNC Turning Machine Detail"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdJ12H-Ke4DwfP0zavvqZ_C_zf80mZ5j56SjItnXE8p7R_98IP2AC0a1vt6lxFUTnSBq6mSaH3HnZkL9Idtb52hLBpKAFqf7e_nXbQ9yDQFj5sb3d5BOAvSORP3Ak-5q6hEwPFG6pY2pd8BUiDm4HPre43Cb5pq6JGgxN2EsBmlHvzU8ERw55XGLbB9D1h0qEwYE5Qz2BmjyXrmW-zenYT6FIF9TTa76SSrVnryXGKHh-9-iNFtRc7ij0__upRzd5A7IgcU5wzQg"
               />
@@ -255,25 +256,25 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Laser Gauging */}
+          {/* 3D Printers */}
           <Link
-            to="/software"
+            to="/printers"
             className="reveal md:col-span-8 border border-outline-variant bg-surface-container-lowest p-8 rounded-2xl flex items-center gap-8 group hover-lift cursor-pointer"
             style={delay(90)}
           >
             <div className="flex-1">
-              <span className="font-label-caps text-safety-orange">ZERO-DEFECT</span>
-              <h3 className="text-headline-md font-headline-md text-on-surface mt-2 mb-2">Laser Gauging Systems</h3>
+              <span className="font-label-caps text-safety-orange">ADDITIVE MANUFACTURING</span>
+              <h3 className="text-headline-md font-headline-md text-on-surface mt-2 mb-2">3D Printers - Go3D</h3>
               <p className="text-body-md font-body-md text-on-surface-variant">
-                Balance Systems integration for real-time tool monitoring and zero-defect manufacturing lines.
+                Go3D industrial 3D printers for fast in-house prototyping, jigs &amp; fixtures, and high-detail end-use parts.
               </p>
               <span className="inline-flex items-center gap-2 mt-5 font-label-bold text-label-bold text-on-surface group-hover:gap-4 group-hover:text-safety-orange transition-all">
-                Discover Systems <span className="material-symbols-outlined">trending_flat</span>
+                Discover Printers <span className="material-symbols-outlined">trending_flat</span>
               </span>
             </div>
             <div className="w-28 h-28 md:w-32 md:h-32 bg-surface-muted rounded-full flex items-center justify-center border border-outline-variant flex-shrink-0 group-hover:border-safety-orange transition-colors">
               <span className="material-symbols-outlined text-on-surface text-5xl group-hover:text-safety-orange transition-colors">
-                biotech
+                view_in_ar
               </span>
             </div>
           </Link>
@@ -308,8 +309,8 @@ export const Home: React.FC = () => {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC6MXh57koTQ6iaC8fUPVgbz_GI8m0kSpj8aqYHevKDCaXCNIj7tntUr-6mo-owuthWN2GSCx5_5raLdj0YFS92x-SCqSUslosU1votGtWg2S2LRdg2ez9DC4LiCAAeuqQzs05RVTGXb714-Sq7lC4VO9_EjEXUqdElFd1JQSnMWxXgjY4NIOEqXtnGLUbqk2Fixd2pgGFR30g-UycnctLJGtqRTJrdySMEDwa4l1NYfye3pkHdlI47YftCk6U_tGhoeZQ0EQxEw"
             />
             <div className="absolute -bottom-6 -right-6 bg-safety-orange p-6 rounded-xl text-white shadow-xl glow-orange hidden md:block">
-              <p className="font-label-caps mb-1 text-white/80">QUALITY ASSURANCE</p>
-              <p className="text-headline-md font-headline-md">ISO Certified</p>
+              <p className="font-label-caps mb-1 text-white/80">EXPERIENCE</p>
+              <p className="text-headline-md font-headline-md">27 Years</p>
             </div>
           </div>
           <div className="reveal reveal-right lg:pl-4" style={delay(120)}>
@@ -451,10 +452,11 @@ export const Home: React.FC = () => {
                       value={formData.product}
                       onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                     >
-                      <option>CNC Vertical Machining Center</option>
                       <option>Grinding Machines</option>
+                      <option>Turning Machines</option>
                       <option>CAD/CAM Software</option>
-                      <option>Laser Gauging Systems</option>
+                      <option>CAE/Simulation Software</option>
+                      <option>3D Printers - Go3D</option>
                     </select>
                   </div>
                   <button

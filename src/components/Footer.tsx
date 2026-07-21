@@ -31,12 +31,10 @@ export const Footer: React.FC = () => {
       {/* Columns */}
       <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-x-gutter gap-y-12 px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
         <div className="col-span-2 lg:col-span-1">
-          <div className="flex items-center gap-2.5 mb-5">
-            <span className="relative grid place-items-center w-9 h-9 rounded-lg bg-safety-orange">
-              <span className="absolute inset-[6px] border-[1.6px] border-white/85 rounded-[3px]"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+          <div className="flex items-center mb-5">
+            <span className="inline-flex items-center bg-white rounded-md px-3 py-2 shadow-sm">
+              <img src="miscellounes/logo.jpeg" alt="Goodmech CNC Solutions" className="h-8 w-auto object-contain" />
             </span>
-            <span className="text-headline-md font-headline-md font-bold tracking-tight">GOODMECH</span>
           </div>
           <p className="text-body-sm font-body-sm text-white/55 mb-6 max-w-xs">
             Authorized dealers for world-class CNC solutions in Phagwara and Kapurthala. Precision engineering
@@ -74,10 +72,9 @@ export const Footer: React.FC = () => {
         <div>
           <p className="font-label-caps text-safety-orange mb-5">PRODUCTS</p>
           <ul className="space-y-3.5">
-            <li><Link to="/machines" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">VMC Centers</Link></li>
             <li><Link to="/machines" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Grinding Machines</Link></li>
             <li><Link to="/machines" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Turning Machines</Link></li>
-            <li><Link to="/software#gauging" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Gauging Systems</Link></li>
+            <li><Link to="/printers" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">3D Printers - Go3D</Link></li>
           </ul>
         </div>
 
@@ -85,6 +82,7 @@ export const Footer: React.FC = () => {
           <p className="font-label-caps text-safety-orange mb-5">RESOURCES</p>
           <ul className="space-y-3.5">
             <li><Link to="/software" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">CAD/CAM Software</Link></li>
+            <li><Link to="/cae" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">CAE/Simulation Software</Link></li>
             <li><Link to="/quote" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Technical Support</Link></li>
             <li><a className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm" href={companyInfo.web.indiamart} target="_blank" rel="noopener noreferrer">Company Profile</a></li>
           </ul>
@@ -115,7 +113,7 @@ export const Footer: React.FC = () => {
 
       <div className="relative border-t border-white/10 py-7 px-margin-mobile md:px-margin-desktop">
         <p className="font-label-caps text-white/40 text-center">
-          © {new Date().getFullYear()} GOODMECH CNC SOLUTIONS · ALL RIGHTS RESERVED · ISO 9001:2015 CERTIFIED
+          © {new Date().getFullYear()} GOODMECH CNC SOLUTIONS · ALL RIGHTS RESERVED
         </p>
       </div>
     </footer>

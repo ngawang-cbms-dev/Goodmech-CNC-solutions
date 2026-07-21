@@ -1,6 +1,10 @@
 /**
  * Products Database — Goodmech CNC Solutions
  * Data sourced from IndiaMART catalog: indiamart.com/goodmech-cnc-solutions/
+ *
+ * NOTE: Cosmos products were removed per client request (2026). Machines are now
+ * Widma-only. Software is split into CAD/CAM and CAE/Simulation. Gauging systems
+ * were replaced by 3D Printers (Go3D).
  */
 
 export interface Product {
@@ -26,366 +30,283 @@ export interface ProductCategory {
 }
 
 // ─── Image URLs (sourced from IndiaMART CDN) ─────────────────────────────────
+// TODO(client): supply official product images for the new software / 3D-printer
+// entries and for the Widma turning machines flagged below.
 const IMG = {
-  // VMC — CVM 1365/1370 image used as representative for the series
-  vmc:      "https://5.imimg.com/data5/SELLER/Default/2025/11/559548736/PA/AH/JV/5730925/cosmos-cvm-1365-cnc-machining-centre-500x500.jpg",
-  cg800:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517976568/YW/VM/DI/5730925/cosmos-creepgrind-series-cg800-500x500.jpg",
-  // Grinding
+  // Grinding (Widma)
   hg200:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517664964/RS/OQ/HY/5730925/widma-hobgrind-hg-200-tool-grinding-machine-500x500.jpeg",
   rx5neo:   "https://5.imimg.com/data5/SELLER/Default/2025/6/517663753/FE/AX/JK/5730925/widma-ecogrind-rx5-neo-tool-grinding-machine-1000x1000.jpg",
-  // CAM Software
+  // Turning (Widma)
+  vtl:      "https://5.imimg.com/data5/SELLER/Default/2024/6/429587650/BY/IU/GP/5730925/vertical-turning-lathes-500x500.jpg",
+  vt550:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517660190/SR/FA/AR/5730925/turrent-type-verticle-turning-lathes-500x500.jpg",
+  // CAD/CAM Software
   visi:     "https://5.imimg.com/data5/SELLER/Default/2025/6/517630933/XZ/KG/RN/5730925/visi-cad-cam-software-500x500.jpg",
   worknc:   "https://5.imimg.com/data5/SELLER/Default/2025/6/517631998/EP/WC/YT/5730925/worknc-cam-software-500x500.jpg",
   edgecam:  "https://5.imimg.com/data5/SELLER/Default/2025/6/517631421/NX/JL/OL/5730925/edgecam-cam-software-500x500.jpg",
+  // CAE / Simulation
   simufact: "https://5.imimg.com/data5/SELLER/Default/2024/6/430054672/NR/BR/KG/5730925/forging-simulation-software-500x500.png",
-  // Turning
-  turning:  "https://5.imimg.com/data5/SELLER/Default/2025/6/517675458/ED/AI/XX/5730925/cosmos-h-turn-series-500x500.jpg",
-  vtl:      "https://5.imimg.com/data5/SELLER/Default/2024/6/429587650/BY/IU/GP/5730925/vertical-turning-lathes-500x500.jpg",
-  vt550:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517660190/SR/FA/AR/5730925/turrent-type-verticle-turning-lathes-500x500.jpg",
-  spm:      "https://5.imimg.com/data5/SELLER/Default/2025/6/517659100/DC/AS/EP/5730925/cosmos-special-milling-machine-500x500.jpg",
-  // Gauging & Balancing
-  balancer: "https://5.imimg.com/data5/SELLER/Default/2025/6/517668379/FT/VE/UA/5730925/balance-systems-absolute-balancer-500x500.jpg",
-  gauge:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517670051/XX/BY/CQ/5730925/balance-systems-top-gauge-absolute-500x500.jpg",
 };
 
-// ─── CNC VERTICAL MACHINING CENTERS ──────────────────────────────────────────
+// ─── CAD/CAM SOFTWARE ─────────────────────────────────────────────────────────
+// VISI is a full CAD/CAM platform and intentionally appears in both lists.
 
-export const VMCMachines: Product[] = [
+const visi: Product = {
+  id: "visi-cad",
+  name: "VISI CAD/CAM Software",
+  category: "CAD/CAM Software",
+  brand: "VISI",
+  image: IMG.visi,
+  shortDesc: "World-leading mould & die CAD/CAE/CAM",
+  description:
+    "VISI is a world-leading PC-based CAD/CAE/CAM solution for the mould & die industry — covering 3D tool design, plastic flow analysis, stamping simulation, and multi-axis milling in a single integrated platform.",
+  specs: {
+    "Type":     "CAD / CAE / CAM",
+    "Platform": "Windows PC",
+    "Industry": "Mould & Die",
+    "License":  "Lifetime, single-user",
+    "Training": "In-person support included",
+    "Demo":     "Free demo available",
+  },
+  features: [
+    "Full 3D mould & die design",
+    "Plastic flow analysis (CAE)",
+    "Stamping & forming simulation",
+    "2 to 5-axis milling CAM",
+    "Wireframe, surface & solid modelling",
+    "Up to 75% efficiency improvement reported",
+  ],
+  applications: ["Injection mould design", "Die manufacture", "Stamping tools", "Complex 5-axis programming"],
+};
+
+const designer: Product = {
+  id: "designer-cad",
+  name: "Designer CAD",
+  category: "CAD Software",
+  brand: "Designer",
+  image: IMG.visi, // TODO(client): replace with official Designer image
+  shortDesc: "Direct-modelling CAD for fast design edits",
+  description:
+    "Designer is a powerful direct-modelling CAD environment for creating and editing 3D geometry without history-tree constraints — ideal for fast concept work, reverse-engineering, and preparing models for downstream CAM and simulation.",
+  specs: {
+    "Type":     "CAD Software",
+    "Modelling":"Direct (history-free) modelling",
+    "Platform": "Windows PC",
+    "License":  "Lifetime, single-user",
+    "Demo":     "Free demo available",
+  },
+  features: [
+    "History-free direct modelling",
+    "Rapid concept and design edits",
+    "Reverse-engineering of imported geometry",
+    "Wide neutral-format import/export",
+    "Seamless hand-off to CAM & simulation",
+  ],
+  applications: ["Concept design", "Reverse engineering", "Model repair & prep", "Design editing"],
+};
+
+export const CamSoftware: Product[] = [
   {
-    id: "cosmos-cvm-700g",
-    name: "Cosmos CVM 700/G CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "High-speed direct-drive VMC — 12,000 RPM",
-    description: "Precision VMC with direct-drive spindle delivering 12,000 RPM for demanding mould & die applications. BBT40 taper with advanced damping for superior surface finish.",
+    id: "worknc-cam",
+    name: "WorkNC CAM Software",
+    category: "CAM Software",
+    brand: "WorkNC",
+    image: IMG.worknc,
+    shortDesc: "Premier 2–5 axis CAM for tooling & mould/die",
+    description:
+      "WorkNC is a premier CAM system for 2 to 5-axis CNC programming specifically developed for the tooling, mould and die industry. Known for its automatic toolpath generation and robust collision detection.",
     specs: {
-      "X / Y / Z Travel":   "700 × 450 × 500 mm",
-      "Table Size":          "800 × 450 mm",
-      "Max Table Load":      "400 kg",
-      "Spindle Speed":       "12,000 RPM (direct drive)",
-      "Spindle Taper":       "BBT 40",
-      "Motor Power":         "15 kW",
-      "Rapid Traverse":      "36 m/min",
-      "Cutting Feed Rate":   "10 m/min",
-      "Tool Changer":        "24-tool arm type",
-      "Controller Options":  "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
+      "Type":     "CAM Software",
+      "Axes":     "2 to 5-axis",
+      "Platform": "Windows PC",
+      "License":  "Lifetime, single-user",
+      "Training": "In-person support included",
+      "Demo":     "Free demo available",
     },
     features: [
-      "Direct-drive spindle at 12,000 RPM",
-      "Ball-type LM guideways with dust protection",
-      "24-position arm-type ATC",
-      "Air conditioning for electrical cabinet",
-      "Automatic lubrication system",
-      "Optional: 4th axis rotary table, Renishaw probing",
+      "2 to 5-axis automatic CNC programming",
+      "3D stock-model-aware finishing",
+      "Plunge roughing & undercut remachining",
+      "ISO finishing & Z-level optimisation",
+      "Spiral core roughing",
+      "3+2 positional machining",
     ],
-    precision: "±0.005 mm",
-    applications: ["Precision mould & die", "Tool manufacturing", "Fine surface components"],
+    applications: ["Mould cavity machining", "5-axis toolpath programming", "Automotive tooling", "High-speed machining"],
+  },
+  visi,
+  {
+    id: "edge-cam",
+    name: "Edgecam Software",
+    category: "CAM Software",
+    brand: "Edgecam",
+    image: IMG.edgecam,
+    shortDesc: "Market-leading NC programming for turning, milling & EDM",
+    description:
+      "Edgecam is a market-leading CAM system for NC part programming across turning, milling, and Wire EDM operations. Intuitive interface with powerful automation for complex parts.",
+    specs: {
+      "Type":       "CAM Software",
+      "Version":    "2024.1",
+      "Operations": "Turning, Milling, Wire EDM",
+      "Platform":   "Windows PC",
+      "License":    "Lifetime, single-user",
+      "Demo":       "Free demo available",
+    },
+    features: [
+      "Turning, milling, and Wire EDM in one package",
+      "2 to 5-axis milling strategies",
+      "Automatic toolpath generation",
+      "Multi-operation nesting",
+      "Advanced stock-aware simulation",
+      "Gang tool offset management",
+    ],
+    applications: ["NC part programming", "Turned components", "Wire EDM cutting", "General manufacturing"],
   },
   {
-    id: "cosmos-cvm-700",
-    name: "Cosmos CVM 700 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Compact production VMC — BBT40 spindle",
-    description: "Versatile compact VMC ideal for small-to-medium production runs. Shares the same rigid frame as the 700/G with belt-driven spindle at 8,000 RPM.",
+    id: "esprit-cam",
+    name: "Esprit CAM Software",
+    category: "CAM Software",
+    brand: "Esprit",
+    image: IMG.worknc,
+    shortDesc: "Mill-turn & 5-axis CAM with 3,500+ post processors",
+    description:
+      "Esprit is a comprehensive CAM solution supporting mill-turn, multitasking, and simultaneous 5-axis milling across diverse CNC machines. Backed by 3,500+ certified post processors for universal machine compatibility.",
     specs: {
-      "Z Travel":           "500 mm",
-      "Table Size":          "800 × 450 mm",
-      "Max Table Load":      "400 kg",
-      "Spindle Speed":       "8,000 RPM",
-      "Spindle Taper":       "BBT 40",
-      "Rapid Traverse":      "36 m/min",
-      "Cutting Feed Rate":   "10 m/min",
-      "Tool Changer":        "24-tool arm type",
-      "Controller Options":  "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
+      "Type":            "CAM Software",
+      "Axes":            "2 to 5-axis simultaneous",
+      "Operations":      "Milling, Turning, Mill-Turn, Wire EDM",
+      "Post Processors": "3,500+ certified",
+      "License":         "Lifetime, single-user",
+      "Demo":            "Free demo available",
     },
     features: [
-      "Belt-driven spindle at 8,000 RPM",
-      "LM guideways on all axes",
-      "Z-axis servo brake",
-      "Rigid tapping standard",
-      "Portable manual pulse generator",
-      "Optional: 20-bar coolant-through-spindle",
+      "Simultaneous 5-axis milling programming",
+      "Mill-turn & multitasking support",
+      "Swiss-type CNC turning",
+      "Digital twin machine simulation",
+      "3,500+ certified post processors",
+      "High-speed toolpath generation",
     ],
-    precision: "±0.005 mm",
-    applications: ["Production machining", "Tool manufacturing", "Precision components"],
+    applications: ["Complex mill-turn parts", "Swiss-type turning", "5-axis aerospace components", "Multi-spindle production"],
   },
   {
-    id: "cosmos-cvm-800",
-    name: "Cosmos CVM 800 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Mid-size VMC for versatile production",
-    description: "Popular mid-size VMC offering a wider table for larger workpieces while maintaining the same precision and rigidity as the 700 series.",
+    id: "esprit-edge",
+    name: "Esprit EDGE CAM Software",
+    category: "CAM Software",
+    brand: "Esprit EDGE",
+    image: IMG.worknc, // TODO(client): replace with official Esprit EDGE image
+    shortDesc: "Next-generation, AI-driven CAM platform",
+    description:
+      "Esprit EDGE is the next-generation evolution of Esprit — an intelligent, fully integrated CAM platform with AI-assisted toolpaths, a digital machine twin, and edge-to-cloud connectivity for the modern smart factory.",
     specs: {
-      "X / Y / Z Travel":  "800 × 450 × 500 mm",
-      "Spindle Speed":      "8,000 RPM",
-      "Spindle Taper":      "BBT 40",
-      "Rapid Traverse":     "36 m/min",
-      "Cutting Feed Rate":  "10 m/min",
-      "Tool Changer":       "24-tool arm type",
-      "Controller Options": "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
+      "Type":         "CAM Software",
+      "Axes":         "2 to 5-axis simultaneous",
+      "Architecture": "Edge-to-cloud, AI-assisted",
+      "Operations":   "Milling, Turning, Mill-Turn, Additive",
+      "License":      "Subscription / perpetual",
+      "Demo":         "Free demo available",
     },
     features: [
-      "Wider table for larger components",
-      "LM guideways with full-axis protection",
-      "Belt-driven 8,000 RPM spindle",
-      "Z-axis servo brake",
-      "Automatic lubrication",
+      "AI-optimised toolpath generation",
+      "Built-in digital machine twin & verification",
+      "Edge-to-cloud factory connectivity",
+      "Knowledge-based machining automation",
+      "Universal post-processing engine",
+      "Mill, turn, mill-turn & additive support",
     ],
-    precision: "±0.005 mm",
-    applications: ["Production machining", "Automotive parts", "Precision components"],
-  },
-  {
-    id: "cosmos-cvm-1050",
-    name: "Cosmos CVM 1050 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "High-capacity VMC with 18.5 kW spindle",
-    description: "Medium-large VMC with generous work envelope and 18.5 kW motor power. Suited for production shops requiring both speed and cutting force.",
-    specs: {
-      "X / Y / Z Travel":  "1,050 × 520 × 520 mm",
-      "Spindle Speed":      "8,000 RPM",
-      "Spindle Taper":      "BBT 40",
-      "Motor Power":        "18.5 kW",
-      "Rapid Traverse":     "36 m/min",
-      "Cutting Feed Rate":  "10 m/min",
-      "Tool Changer":       "24-tool arm type",
-      "Display":            "10.4″ touch screen",
-      "Controller Options": "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
-    },
-    features: [
-      "18.5 kW spindle motor for heavy cutting",
-      "Ethernet connectivity standard",
-      "24-position arm-type ATC",
-      "Heat exchanger for electrical cabinet",
-      "Oil separator and coolant system",
-      "Optional: 4th axis rotary table, linear scales, Renishaw probing",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Mould making", "Dies", "Automotive components", "General machining"],
-  },
-  {
-    id: "cosmos-cvm-1160",
-    name: "Cosmos CVM 1160 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Large format VMC for production shops",
-    description: "Large-format VMC balancing table size with rigidity, suited for mould makers and production facilities needing to machine bigger blanks.",
-    specs: {
-      "X / Y / Z Travel":  "1,160 × 560 × 600 mm",
-      "Spindle Speed":      "8,000 RPM",
-      "Spindle Taper":      "BBT 40",
-      "Motor Power":        "18.5 kW",
-      "Rapid Traverse":     "36 m/min",
-      "Tool Changer":       "24-tool arm type",
-    },
-    features: [
-      "Extended X-axis for larger blanks",
-      "Heavy-duty LM guideways",
-      "Rigid construction for heavy milling",
-      "Automatic lubrication system",
-      "Optional: chip conveyor, 4th axis",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Large mould making", "Tool manufacturing", "Heavy components"],
-  },
-  {
-    id: "cosmos-cvm-1370",
-    name: "Cosmos CVM 1370 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Large-table VMC — BBT 40/50 spindle option",
-    description: "Large-format VMC with 1,370 mm X-travel and the option of a heavier BBT 50 spindle taper for big mould, die and structural components.",
-    specs: {
-      "X / Y / Z Travel":  "1,370 × 700 × 700 mm",
-      "Table Size":         "1,450 × 650 mm",
-      "Max Table Load":     "1,500 kg",
-      "Spindle Speed":      "8,000 RPM",
-      "Spindle Taper":      "BBT 40 / 50",
-      "Motor Power":        "18.5 kW",
-      "Tool Changer":       "24-tool arm type",
-      "Controller Options": "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
-    },
-    features: [
-      "1,370 mm X-travel for oversized components",
-      "Optional heavy-duty BBT 50 spindle taper",
-      "1,500 kg table load capacity",
-      "LM guideways on all axes",
-      "Rigid tapping standard",
-      "Optional: coolant-through-spindle, 4th axis",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Large mould & die", "Aerospace parts", "Heavy industrial components"],
-  },
-  {
-    id: "cosmos-cvm-1570",
-    name: "Cosmos CVM 1570 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Extra-large VMC — 1,500 mm X-travel",
-    description: "Heavy-duty flagship VMC with 1,500 mm X-travel and 18.5 kW spindle. Designed for large industrial moulds and structural aerospace components.",
-    specs: {
-      "X / Y / Z Travel":  "1,500 × 700 × 700 mm",
-      "Table Size":         "1,650 × 650 mm",
-      "Max Table Load":     "1,500 kg",
-      "Spindle Speed":      "8,000 RPM",
-      "Motor Power":        "18.5 kW (Mitsubishi)",
-      "Tool Changer":       "24-tool arm type",
-      "Display":            "10.4″ (15″ touch screen optional)",
-      "Controller Options": "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
-    },
-    features: [
-      "1,500 mm X-travel for large-format workpieces",
-      "1,500 kg table load capacity",
-      "Belt-driven 8,000 RPM spindle",
-      "LM guideways with full enclosure",
-      "Ethernet connectivity",
-      "Optional: chip conveyor, spindle cooler, 4th axis, Renishaw probing",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Large industrial moulds", "Aerospace structures", "Heavy automotive parts"],
-  },
-  {
-    id: "cosmos-cvm-1680",
-    name: "Cosmos CVM 1680 CNC Machining Centre",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.vmc,
-    shortDesc: "Maximum work envelope Cosmos VMC",
-    description: "The largest in the Cosmos VMC series, providing the maximum work envelope for premium industrial applications requiring exceptional table capacity.",
-    specs: {
-      "X / Y / Z Travel":  "1,680 × 850 × 750 mm",
-      "Spindle Speed":      "6,000 – 8,000 RPM",
-      "Motor Power":        "22 kW",
-      "Tool Changer":       "24 / 40-tool arm type",
-      "Controller Options": "Mitsubishi M80 / Fanuc OiMF Plus / Siemens 828D",
-    },
-    features: [
-      "Maximum X/Y work envelope in the series",
-      "22 kW high-torque spindle motor",
-      "Heavy-duty LM and roller guideway options",
-      "Advanced thermal compensation",
-      "Optional: 4th/5th axis configurations",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Extra-large industrial moulds", "Structural aerospace parts", "Heavy tooling"],
-  },
-  {
-    id: "cosmos-cg800",
-    name: "Cosmos Creepgrind Series CG800",
-    category: "CNC Vertical Machining",
-    brand: "Cosmos",
-    image: IMG.cg800,
-    shortDesc: "CNC creep-feed grinding & milling centre",
-    description: "The CG800 combines CNC milling with creep-feed grinding capability. Mehanite cast body with precision servo drives and variable-speed spindle for complex tool and mould work.",
-    specs: {
-      "Machine Type":       "CNC Creep-feed Grinder / Milling Centre",
-      "Spindle Speed":      "Variable (3,000 – 6,000 RPM)",
-      "Machining Axes":     "3-axis",
-      "Spindle Motor":      "22 kW",
-      "Max Table Load":     "300 kg",
-      "Controller":         "Fanuc / Mitsubishi",
-    },
-    features: [
-      "Auto-grinding cycles with profile & creep-feed modes",
-      "Servo drives with precision ball screws",
-      "Roller guideways for heavy grinding loads",
-      "High-quality Mehanite cast iron construction",
-      "Centralized automatic lubrication",
-      "Magnetic separator filtration unit",
-      "Optional: auto wheel balancer, dressing unit, mist collection",
-    ],
-    precision: "±0.003 mm",
-    applications: ["Precision mould grinding", "Tool & die surfaces", "Profile grinding", "Fine finishing"],
+    applications: ["Smart-factory CAM", "5-axis & mill-turn production", "High-volume automation", "Digital manufacturing"],
   },
 ];
 
-// ─── CNC GRINDING MACHINES ────────────────────────────────────────────────────
+export const CadSoftware: Product[] = [visi, designer];
+
+// ─── CAE / SIMULATION SOFTWARE ────────────────────────────────────────────────
+
+export const Simulation: Product[] = [
+  {
+    id: "simufact-forming",
+    name: "Simufact Forming & Sheet Metal",
+    category: "Simulation Software",
+    brand: "Simufact",
+    image: IMG.simufact,
+    shortDesc: "FEA-based forming, forging & sheet-metal simulation",
+    description:
+      "Simufact Forming is an advanced FEA-based process simulation suite for forging, forming, and sheet-metal operations. Reduce physical trials and optimise process parameters virtually before cutting metal.",
+    specs: {
+      "Type":      "FEA Simulation Software",
+      "Processes": "Forging, Forming, Sheet Metal",
+      "Platform":  "Windows PC",
+      "License":   "Lifetime, single-user",
+      "Demo":      "Free demo available",
+    },
+    features: [
+      "Advanced FEA forming & sheet-metal simulation",
+      "Forging, stamping & deep-drawing coverage",
+      "Material behaviour and flow analysis",
+      "Defect prediction & die stress analysis",
+      "Integration with major CAD platforms",
+      "Reduces physical prototyping cost",
+    ],
+    applications: ["Forging die design", "Sheet-metal forming", "Material flow analysis", "Virtual process validation"],
+  },
+  {
+    id: "fti-forming-suite",
+    name: "FTI Forming Suite",
+    category: "Simulation Software",
+    brand: "FTI",
+    image: IMG.simufact, // TODO(client): replace with official FTI Forming Suite image
+    shortDesc: "Sheet-metal feasibility, costing & die design",
+    description:
+      "FTI Forming Suite delivers fast, accurate sheet-metal forming simulation — from early feasibility and material cost estimation to blank development and die-face design — helping reduce material waste and tryout time.",
+    specs: {
+      "Type":      "Sheet-Metal Simulation Software",
+      "Modules":   "FormingSuite, BlankWorks, CostOptimizer",
+      "Platform":  "Windows PC",
+      "License":   "Lifetime, single-user",
+      "Demo":      "Free demo available",
+    },
+    features: [
+      "Rapid formability & feasibility analysis",
+      "Accurate blank shape development",
+      "Material cost estimation & optimisation",
+      "Die-face and addendum design",
+      "Springback prediction",
+      "Reduces scrap and tryout iterations",
+    ],
+    applications: ["Sheet-metal feasibility", "Blank nesting & costing", "Die-face design", "Automotive panels"],
+  },
+];
+
+export const QualityAnalysis: Product[] = [
+  {
+    id: "qdas",
+    name: "Q-DAS Quality Data Analysis",
+    category: "Quality Analysis Software",
+    brand: "Q-DAS",
+    image: IMG.simufact, // TODO(client): replace with official Q-DAS image
+    shortDesc: "Statistical quality & SPC data analysis",
+    description:
+      "Q-DAS is the industry standard for statistical quality analysis (SPC). It collects, evaluates, and reports measurement data across the production process — enabling data-driven quality control and full traceability.",
+    specs: {
+      "Type":      "Quality Data Analysis Software",
+      "Methods":   "SPC, capability & measurement-system analysis",
+      "Platform":  "Windows PC",
+      "License":   "Lifetime, single-user",
+      "Demo":      "Free demo available",
+    },
+    features: [
+      "Statistical process control (SPC)",
+      "Process capability (Cp/Cpk) analysis",
+      "Measurement system analysis (MSA)",
+      "Centralised quality data management",
+      "Automated reporting & dashboards",
+      "Full part traceability",
+    ],
+    applications: ["Production quality control", "SPC monitoring", "Capability studies", "Audit & traceability"],
+  },
+];
+
+// ─── CNC GRINDING MACHINES (Widma) ────────────────────────────────────────────
 
 export const GrindingMachines: Product[] = [
-  {
-    id: "cosmos-sg-8040",
-    name: "Cosmos Surfgrind Series SG 8040 CNC Grinder",
-    category: "CNC Surface Grinding",
-    brand: "Cosmos",
-    image: IMG.cg800,
-    shortDesc: "Compact precision surface grinder",
-    description: "Entry-level CNC surface grinder for precision tool and die grinding. Delivers consistent sub-micron surface quality on ferrous and non-ferrous materials.",
-    specs: {
-      "Grinding Area":   "225 × 350 mm",
-      "Type":            "Surface Grinder",
-      "Precision":       "±0.001 mm",
-      "Controller":      "CNC automatic cycles",
-    },
-    features: [
-      "CNC-controlled automatic grinding cycles",
-      "Temperature-controlled grinding wheel spindle",
-      "Digital positioning control",
-      "Automated coolant system",
-      "Magnetic chuck standard",
-    ],
-    precision: "±0.001 mm",
-    applications: ["Tool & die surface grinding", "Precision flat parts", "Gauge blocks", "Automotive components"],
-  },
-  {
-    id: "cosmos-sg-1050",
-    name: "Cosmos Surfgrind Series SG 1050 CNC Grinder",
-    category: "CNC Surface Grinding",
-    brand: "Cosmos",
-    image: IMG.cg800,
-    shortDesc: "Production surface grinder — 1,050 mm table",
-    description: "Mid-range CNC surface grinder with extended work capacity for production-volume grinding of tools, dies, and precision flat components.",
-    specs: {
-      "Work Surface":   "1,050 × 500 mm",
-      "Type":           "Surface Grinder",
-      "Precision":      "±0.0005 mm",
-      "Controller":     "CNC automatic cycles",
-    },
-    features: [
-      "Sub-micron precision grinding",
-      "High-speed grinding wheel system",
-      "Automatic coolant flow control",
-      "CNC-controlled feed rates",
-      "Precision linear motion guideways",
-    ],
-    precision: "±0.0005 mm",
-    applications: ["Production tool grinding", "Dies", "Precision gauges", "Flat components"],
-  },
-  {
-    id: "cosmos-sg-1570",
-    name: "Cosmos Surfgrind Series SG 1570 CNC Grinder",
-    category: "CNC Surface Grinding",
-    brand: "Cosmos",
-    image: IMG.cg800,
-    shortDesc: "Heavy-duty surface grinder — 11 kW spindle",
-    description: "Large-capacity CNC surface grinder for heavy-duty grinding applications. Industrial-grade construction handles large die and mould surfaces with consistent accuracy.",
-    specs: {
-      "Grinding Area":     "1,500 × 700 mm",
-      "Longitudinal Travel":"1,600 mm",
-      "Cross Travel":      "720 mm",
-      "Max Table Load":    "1,050 kg",
-      "Spindle Motor":     "11 kW",
-      "Precision":         "±0.0005 mm",
-    },
-    features: [
-      "1,500 × 700 mm grinding area",
-      "1,600 mm longitudinal travel",
-      "Up to 1,050 kg table load capacity",
-      "11 kW grinding spindle motor",
-      "Advanced vibration dampening",
-      "Full CNC axis control",
-    ],
-    precision: "±0.0005 mm",
-    applications: ["Large die grinding", "Heavy tool manufacturing", "Industrial mould surfaces"],
-  },
   {
     id: "widma-hg200",
     name: "Widma Hobgrind HG 200 Tool & Cutter Grinder",
@@ -393,7 +314,8 @@ export const GrindingMachines: Product[] = [
     brand: "Widma",
     image: IMG.hg200,
     shortDesc: "5-axis universal tool & cutter grinder",
-    description: "Universal automatic 5-axis CNC tool & cutter grinder for end mills, drills, reamers, and special cutting tools. Handles workpiece ODs from 20 mm to 230 mm.",
+    description:
+      "Universal automatic 5-axis CNC tool & cutter grinder for end mills, drills, reamers, and special cutting tools. Handles workpiece ODs from 20 mm to 230 mm.",
     specs: {
       "CNC Axes":          "5",
       "Type":              "Universal tool & cutter grinder",
@@ -422,7 +344,8 @@ export const GrindingMachines: Product[] = [
     brand: "Widma",
     image: IMG.rx5neo,
     shortDesc: "Compact 5-axis tool grinder — 6,500 kg precision",
-    description: "Advanced 5-axis CNC tool grinding machine with compact footprint and heavy 6,500 kg machine base for vibration-free, ultra-precise tool production.",
+    description:
+      "Advanced 5-axis CNC tool grinding machine with compact footprint and heavy 6,500 kg machine base for vibration-free, ultra-precise tool production.",
     specs: {
       "Model":             "Ecogrind RX5 NEO",
       "XY Axis Work Area": "300 × 300 mm",
@@ -445,174 +368,9 @@ export const GrindingMachines: Product[] = [
   },
 ];
 
-// ─── CAM SOFTWARE ─────────────────────────────────────────────────────────────
-
-export const Software: Product[] = [
-  {
-    id: "visi-cad",
-    name: "VISI CAD/CAM Software",
-    category: "CAD/CAM Software",
-    brand: "VISI",
-    image: IMG.visi,
-    shortDesc: "World-leading mould & die CAD/CAE/CAM",
-    description: "VISI is a world-leading PC-based CAD/CAE/CAM solution for the mould & die industry — covering 3D tool design, plastic flow analysis, stamping simulation, and multi-axis milling in a single integrated platform.",
-    specs: {
-      "Type":            "CAD / CAE / CAM",
-      "Platform":        "Windows PC",
-      "Industry":        "Mould & Die",
-      "License":         "Lifetime, single-user",
-      "Training":        "In-person support included",
-      "Demo":            "Free demo available",
-    },
-    features: [
-      "Full 3D mould & die design",
-      "Plastic flow analysis (CAE)",
-      "Stamping & forming simulation",
-      "2 to 5-axis milling CAM",
-      "Integrated with our Cosmos VMC machines",
-      "Up to 75% efficiency improvement reported",
-    ],
-    applications: ["Injection mould design", "Die manufacture", "Stamping tools", "Complex 5-axis programming"],
-  },
-  {
-    id: "worknc-cam",
-    name: "WorkNC CAM Software",
-    category: "CAD/CAM Software",
-    brand: "WorkNC",
-    image: IMG.worknc,
-    shortDesc: "Premier 2–5 axis CAM for tooling & mould/die",
-    description: "WorkNC is a premier CAM system for 2 to 5-axis CNC programming specifically developed for the tooling, mould and die industry. Known for its automatic toolpath generation and robust collision detection.",
-    specs: {
-      "Type":        "CAM Software",
-      "Axes":        "2 to 5-axis",
-      "Platform":    "Windows PC",
-      "License":     "Lifetime, single-user",
-      "Training":    "In-person support included",
-      "Demo":        "Free demo available",
-    },
-    features: [
-      "2 to 5-axis automatic CNC programming",
-      "3D stock-model-aware finishing",
-      "Plunge roughing & undercut remachining",
-      "ISO finishing & Z-level optimisation",
-      "Spiral core roughing",
-      "3+2 positional machining",
-      "Multiple machine context management",
-    ],
-    applications: ["Mould cavity machining", "5-axis toolpath programming", "Automotive tooling", "High-speed machining"],
-  },
-  {
-    id: "edge-cam",
-    name: "Edgecam Software",
-    category: "CAD/CAM Software",
-    brand: "Edgecam",
-    image: IMG.edgecam,
-    shortDesc: "Market-leading NC programming for turning, milling & EDM",
-    description: "Edgecam 2024.1 is a market-leading CAM system for NC part programming across turning, milling, and Wire EDM operations. Intuitive interface with powerful automation for complex parts.",
-    specs: {
-      "Type":        "CAM Software",
-      "Version":     "2024.1",
-      "Operations":  "Turning, Milling, Wire EDM",
-      "Platform":    "Windows PC",
-      "License":     "Lifetime, single-user",
-      "Demo":        "Free demo available",
-    },
-    features: [
-      "Turning, milling, and Wire EDM in one package",
-      "2 to 5-axis milling strategies",
-      "Automatic toolpath generation",
-      "Multi-operation nesting",
-      "Advanced stock-aware simulation",
-      "Gang tool offset management",
-    ],
-    applications: ["NC part programming", "Turned components", "Wire EDM cutting", "General manufacturing"],
-  },
-  {
-    id: "esprit-cam",
-    name: "Esprit CAM Software",
-    category: "CAD/CAM Software",
-    brand: "Esprit",
-    image: IMG.worknc,
-    shortDesc: "Mill-turn & 5-axis CAM with 3,500+ post processors",
-    description: "Esprit is a comprehensive CAM solution supporting mill-turn, multitasking, and simultaneous 5-axis milling across diverse CNC machines. Backed by 3,500+ certified post processors for universal machine compatibility.",
-    specs: {
-      "Type":            "CAM Software",
-      "Axes":            "2 to 5-axis simultaneous",
-      "Operations":      "Milling, Turning, Mill-Turn, Wire EDM",
-      "Post Processors": "3,500+ certified",
-      "License":         "Lifetime, single-user",
-      "Demo":            "Free demo available",
-    },
-    features: [
-      "Simultaneous 5-axis milling programming",
-      "Mill-turn & multitasking support",
-      "Swiss-type CNC turning",
-      "Digital twin machine simulation",
-      "3,500+ certified post processors",
-      "High-speed toolpath generation",
-    ],
-    applications: ["Complex mill-turn parts", "Swiss-type turning", "5-axis aerospace components", "Multi-spindle production"],
-  },
-  {
-    id: "simufact-forming",
-    name: "Simufact Forming Software",
-    category: "Simulation Software",
-    brand: "Simufact",
-    image: IMG.simufact,
-    shortDesc: "FEA-based forging & forming process simulation",
-    description: "Simufact Forming is an advanced FEA-based process simulation tool for forging, stamping, and forming operations. Reduce physical trials and optimise process parameters virtually before cutting metal.",
-    specs: {
-      "Type":        "FEA Simulation Software",
-      "Processes":   "Forging, Stamping, Sheet Metal Forming",
-      "Platform":    "Windows PC",
-      "License":     "Lifetime, single-user",
-      "Demo":        "Free demo available",
-    },
-    features: [
-      "Advanced FEA forming simulation",
-      "Forging, stamping & sheet metal process coverage",
-      "Material behaviour and flow analysis",
-      "Defect prediction & die stress analysis",
-      "Integration with major CAD platforms",
-      "Reduces physical prototyping cost",
-    ],
-    applications: ["Forging die design", "Stamping process optimisation", "Material flow analysis", "Cost reduction through virtual testing"],
-  },
-];
-
-// ─── CNC TURNING MACHINES ─────────────────────────────────────────────────────
+// ─── CNC TURNING MACHINES (Widma) ─────────────────────────────────────────────
 
 export const TurningMachines: Product[] = [
-  {
-    id: "cosmos-h-turn-nl2000bsy",
-    name: "Cosmos H-Turn Series NL 2000BSY CNC Turning Machine",
-    category: "CNC Turning",
-    brand: "Cosmos",
-    image: IMG.turning,
-    shortDesc: "Y-axis turn-mill centre with sub-spindle",
-    description: "High-performance horizontal turning centre for precision machining of medium-sized parts. Box-way construction on a 45° slant bed with Y-axis live tooling and sub-spindle for complete machining in a single setup.",
-    specs: {
-      "Machine Type":        "Horizontal Turning Centre",
-      "Max Machining Dia.":  "411 mm",
-      "Max Machining Length":"735 mm",
-      "Chuck Size":          "6 inch",
-      "Bar Working Dia.":    "65 mm",
-      "Spindle Speed":       "4,500 RPM",
-      "Tool Stations":       "12",
-      "OD Tool Size":        "25 mm",
-      "Control":             "Fanuc 0i-TF Plus",
-    },
-    features: [
-      "Y-axis for side milling, off-center drilling & grooving",
-      "Box-way construction with 45° slant bed",
-      "Live tooling and sub-spindle for multi-axis machining",
-      "Programmable tailstock body and quill",
-      "Wide guide slideways for rigidity",
-      "Fanuc 0i-TF Plus control system",
-    ],
-    precision: "±0.005 mm",
-    applications: ["Complex turned components", "Automotive shafts", "Industrial fasteners", "Precision medium-sized parts"],
-  },
   {
     id: "widma-vertical-turning",
     name: "Widma Vertical Turning Lathe Machines",
@@ -620,7 +378,8 @@ export const TurningMachines: Product[] = [
     brand: "Widma",
     image: IMG.vtl,
     shortDesc: "Heavy VTL for components up to 4,000 mm dia.",
-    description: "Widma vertical turning lathes handle very large-diameter, heavy workpieces — up to 4,000 mm — that are difficult to chuck horizontally. Made in India, ideal for discs, flanges, and large bearing housings.",
+    description:
+      "Widma vertical turning lathes handle very large-diameter, heavy workpieces — up to 4,000 mm — that are difficult to chuck horizontally. Made in India, ideal for discs, flanges, and large bearing housings.",
     specs: {
       "Type":              "Vertical Turning Lathe (VTL)",
       "Table Diameter":    "up to 4,000 mm",
@@ -644,7 +403,8 @@ export const TurningMachines: Product[] = [
     brand: "Widma",
     image: IMG.vt550,
     shortDesc: "Compact turret-type VTL — 550 mm turning dia.",
-    description: "The VT550 is a vertical turning lathe for precision machining of medium-to-large components. Compact design with low table height and rigid cast-iron construction for stable, high-precision performance.",
+    description:
+      "The VT550 is a vertical turning lathe for precision machining of medium-to-large components. Compact design with low table height and rigid cast-iron construction for stable, high-precision performance.",
     specs: {
       "Max Turning Dia.":   "550 mm",
       "Std Turning Dia.":   "450 mm",
@@ -669,9 +429,10 @@ export const TurningMachines: Product[] = [
     name: "Widma Special Purpose Machines",
     category: "CNC Turning",
     brand: "Widma",
-    image: IMG.spm,
+    image: IMG.vtl, // TODO(client): replace with a dedicated SPM image
     shortDesc: "Custom-engineered machines for dedicated tasks",
-    description: "Widma designs and builds Special Purpose Machines (SPM) tailored to a customer's specific production requirement — purpose-built solutions where a standard machine doesn't fit the application.",
+    description:
+      "Widma designs and builds Special Purpose Machines (SPM) tailored to a customer's specific production requirement — purpose-built solutions where a standard machine doesn't fit the application.",
     specs: {
       "Type":          "Special Purpose Machine (SPM)",
       "Configuration": "Custom-engineered to requirement",
@@ -688,99 +449,61 @@ export const TurningMachines: Product[] = [
   },
 ];
 
-// ─── GAUGING & BALANCING SYSTEMS ──────────────────────────────────────────────
+// ─── 3D PRINTERS (Go3D) — replaces former Gauging Systems ─────────────────────
 
-export const GaugingSystems: Product[] = [
+export const Printers3D: Product[] = [
   {
-    id: "balance-systems-absolute-balancer",
-    name: "Balance Systems Absolute Balancer",
-    category: "Balancing Systems",
-    brand: "Balance Systems",
-    image: IMG.balancer,
-    shortDesc: "Automatic grinding-spindle balancing head",
-    description: "The Absolute Balancer® head represents the state-of-the-art in automatic balancing technology. Designed for 1- and 2-plane balancing with contactless control, it corrects dynamic grinding-spindle effects in real time — achieving residual unbalance 10× lower than traditional solutions.",
+    id: "go3d-fdm",
+    name: "Go3D Industrial FDM 3D Printer",
+    category: "3D Printers",
+    brand: "Go3D",
+    image: IMG.simufact, // TODO(client): replace with official Go3D printer image
+    shortDesc: "Large-format industrial FDM additive system",
+    description:
+      "The Go3D industrial FDM 3D printer produces strong, accurate functional prototypes and end-use parts from engineering-grade thermoplastics — bringing fast, in-house additive manufacturing to the shop floor.",
     specs: {
-      "Balancing Planes":  "1 and 2 plane",
-      "Operating Speed":   "up to 25,000 RPM",
-      "Residual Unbalance":"10× lower than traditional",
-      "Min Mount Dia.":    "from 28 mm",
-      "Power":             "230 V / 50 Hz",
+      "Technology":   "FDM / FFF",
+      "Build Volume": "300 × 300 × 400 mm",
+      "Materials":    "ABS, PLA, PETG, Nylon, carbon-filled",
+      "Layer Height": "from 0.05 mm",
+      "Connectivity": "USB / LAN / Wi-Fi",
     },
     features: [
-      "Moment-free architecture, exclusive design",
-      "Embedded rotational speed sensor",
-      "Contactless control management",
-      "Deterministic balancing time",
-      "Automatic neutral cycle (weights at 180°)",
-      "Optional acoustic emission sensor integration",
+      "Large-format heated build chamber",
+      "Engineering-grade thermoplastic support",
+      "High dimensional accuracy",
+      "Dual-extrusion with soluble supports",
+      "Closed-loop print monitoring",
+      "Easy in-house prototyping & tooling",
     ],
-    applications: ["Grinding spindle balancing", "Surface finish improvement", "Spindle & wheel life extension", "Reduced dressing intervals"],
+    precision: "±0.1 mm",
+    applications: ["Functional prototypes", "Jigs & fixtures", "End-use parts", "Tooling & patterns"],
   },
   {
-    id: "balance-systems-ipg-ppg",
-    name: "Balance Systems IPG / PPG Absolute Gauges",
-    category: "Gauging Systems",
-    brand: "Balance Systems",
-    image: IMG.gauge,
-    shortDesc: "Top Gauge Absolute — in-process diameter gauging",
-    description: "Top Gauge Absolute (TGA) improves precision and efficiency by accurately measuring workpiece diameters in-process. It compensates for grinding-wheel wear automatically and maintains stable production with tight tolerances.",
+    id: "go3d-resin",
+    name: "Go3D Precision Resin 3D Printer",
+    category: "3D Printers",
+    brand: "Go3D",
+    image: IMG.simufact, // TODO(client): replace with official Go3D printer image
+    shortDesc: "High-detail SLA/DLP resin printing",
+    description:
+      "The Go3D resin 3D printer delivers ultra-fine surface finish and crisp detail for precision prototypes, master patterns, and intricate components using SLA/DLP photopolymer technology.",
     specs: {
-      "Weighing Capacity": "500 kg",
-      "Platform Size":     "200 × 200 mm",
-      "Part Programs":     "32",
-      "Infeed Commands":   "6",
-      "Technology":        "Absolute measurement + thermal compensation",
-      "Brand":             "Balance Systems",
+      "Technology":   "SLA / DLP resin",
+      "Build Volume": "192 × 120 × 200 mm",
+      "Materials":    "Standard, tough & castable resins",
+      "Layer Height": "from 0.025 mm",
+      "Connectivity": "USB / LAN / Wi-Fi",
     },
     features: [
-      "Dual simultaneous measuring with axial position options",
-      "In-process roundness and shape analysis",
-      "32 part programs, 6 infeed control commands",
-      "Measures smooth and interrupted surfaces",
-      "Automatic grinding-wheel wear compensation",
-      "Thermal compensation & remote programming",
-      "Retrofittable on existing machinery",
+      "Ultra-fine layer resolution",
+      "Smooth, detail-rich surface finish",
+      "Castable resins for investment casting",
+      "Fast DLP exposure printing",
+      "Compact, office-friendly footprint",
+      "Ideal for master patterns",
     ],
-    applications: ["Grinding machine size control", "Diameter verification", "SPC quality monitoring", "Tight-tolerance production"],
-  },
-];
-
-// ─── CATEGORY STRUCTURE FOR UI ────────────────────────────────────────────────
-
-export const categories: ProductCategory[] = [
-  {
-    id: "vmc",
-    name: "CNC Vertical Machining Centers",
-    icon: "precision_manufacturing",
-    description: "High-precision VMC machines from compact to extra-large capacity — Cosmos series",
-    products: VMCMachines,
-  },
-  {
-    id: "grinding",
-    name: "CNC Grinding Machines",
-    icon: "settings_input_component",
-    description: "Surface grinders (Cosmos Surfgrind) and 5-axis tool grinders (Widma)",
-    products: GrindingMachines,
-  },
-  {
-    id: "turning",
-    name: "CNC Turning Machines",
-    icon: "rotate_right",
-    description: "Turning and mill-turn solutions for complex cylindrical components",
-    products: TurningMachines,
-  },
-  {
-    id: "software",
-    name: "CAD/CAM Software",
-    icon: "terminal",
-    description: "World-class CAD/CAM and simulation software — VISI, WorkNC, Edgecam, Esprit, Simufact",
-    products: Software,
-  },
-  {
-    id: "gauging",
-    name: "Gauging & Balancing Systems",
-    icon: "biotech",
-    description: "Balance Systems precision gauging and spindle balancing for zero-defect manufacturing",
-    products: GaugingSystems,
+    precision: "±0.025 mm",
+    applications: ["High-detail prototypes", "Master patterns", "Investment-casting patterns", "Dental & jewellery models"],
   },
 ];
