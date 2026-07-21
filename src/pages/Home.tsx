@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Floating spec chips */}
-            <div className="anim-in mt-12 flex flex-wrap gap-3" style={{ animationDelay: '420ms' }}>
+            <div className="anim-in mt-8 md:mt-10 flex flex-wrap gap-3" style={{ animationDelay: '420ms' }}>
               {[
                 { k: 'SPINDLE', v: '12,000 RPM' },
                 { k: 'ACCURACY', v: '±0.005 mm' },
@@ -124,8 +124,8 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll cue */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/50">
+        {/* Scroll cue — hidden on short viewports so it never collides with the spec chips */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden lg:flex [@media(max-height:820px)]:!hidden flex-col items-center gap-2 text-white/50 pointer-events-none">
           <span className="font-label-caps">SCROLL</span>
           <span className="material-symbols-outlined animate-float">expand_more</span>
         </div>
@@ -155,8 +155,8 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================== CORE EXPERTISE BENTO ===================== */}
-      <section className="py-24 md:py-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="mb-14 reveal">
+      <section className="py-16 md:py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div className="mb-10 reveal">
           <span className="font-label-caps text-safety-orange">WHAT WE BUILD</span>
           <h2 className="text-headline-lg font-headline-lg text-on-surface mt-3 mb-4">Core Expertise</h2>
           <div className="accent-rule"></div>

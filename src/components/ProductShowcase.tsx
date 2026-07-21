@@ -103,24 +103,18 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
             </div>
           </aside>
 
-          {/* Product Display Area - Dynamic Grid */}
-          <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          {/* Product Display Area — every card full-width, one per row */}
+          <div className="lg:col-span-9 grid grid-cols-1 gap-gutter">
             {displayedProducts.map((product, index) => (
               <article
                 key={`${active?.id}-${product.id}`}
-                className={`anim-in group bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 hover-lift hover:border-safety-orange overflow-hidden flex flex-col ${
-                  index === 0 ? 'md:col-span-12' : 'md:col-span-6'
-                }`}
+                className="anim-in group bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 hover-lift hover:border-safety-orange overflow-hidden flex flex-col"
                 style={{ animationDelay: `${index * 70}ms` }}
               >
-                <div className={index === 0 ? 'md:flex md:gap-8 md:items-stretch' : ''}>
+                <div className="md:flex md:gap-8 md:items-stretch">
                   {/* Image */}
-                  <div
-                    className={`relative bg-surface-muted rounded-xl overflow-hidden mb-6 ${
-                      index === 0 ? 'md:mb-0 md:w-1/2 aspect-video md:aspect-auto' : 'aspect-video'
-                    }`}
-                  >
-                    {index === 0 && (
+                  <div className="relative bg-surface-muted rounded-xl overflow-hidden mb-6 md:mb-0 md:w-1/2 aspect-video md:aspect-auto">
+                    {product.brand && (
                       <span className="absolute top-3 left-3 z-10 bg-safety-orange text-white font-label-caps px-2.5 py-1 rounded-md">
                         {product.brand}
                       </span>
@@ -133,7 +127,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
                   </div>
 
                   {/* Body */}
-                  <div className={index === 0 ? 'md:w-1/2 flex flex-col' : 'flex flex-col'}>
+                  <div className="md:w-1/2 flex flex-col">
                     <h2 className="text-headline-md font-headline-md text-on-surface">{product.name}</h2>
                     <p className="text-body-sm font-body-sm text-on-surface-variant mt-1 mb-5">
                       {product.shortDesc || product.description}

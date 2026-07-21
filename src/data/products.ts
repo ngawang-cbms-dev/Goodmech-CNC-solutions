@@ -45,6 +45,21 @@ const IMG = {
   edgecam:  "https://5.imimg.com/data5/SELLER/Default/2025/6/517631421/NX/JL/OL/5730925/edgecam-cam-software-500x500.jpg",
   // CAE / Simulation
   simufact: "https://5.imimg.com/data5/SELLER/Default/2024/6/430054672/NR/BR/KG/5730925/forging-simulation-software-500x500.png",
+  // Special Purpose Machines (Widma) — hotlinked from widma.com CDN
+  // TODO(client): download & self-host these in /public for long-term stability.
+  spmRotaryIndex: "https://www.widma.com/wp-content/uploads/2022/01/Multi-operaton-rotary-indexing-1024x683-1.webp",
+  spmValveSeat:   "https://www.widma.com/wp-content/uploads/2022/01/Valve-Seat--1024x683.webp",
+  spmFineBoring:  "https://www.widma.com/wp-content/uploads/2022/01/Fine-boring-Machine-1024x683.png",
+  spmMultiSpindle:"https://www.widma.com/wp-content/uploads/2022/01/Multi-spindle-machine.webp",
+  spmFacingCenter:"https://www.widma.com/wp-content/uploads/2022/01/Facing-_-Centering-machine-1024x683.webp",
+  spmSpecialMill: "https://www.widma.com/wp-content/uploads/2022/01/Special-Milling-machine.webp",
+  spmHeavyMill:   "https://www.widma.com/wp-content/uploads/2022/01/Heavy-Rough-Milling-machine-1024x683.webp",
+  spmFinishMill:  "https://www.widma.com/wp-content/uploads/2022/01/Finish-Milling-Machines.webp",
+  // Deep Hole Drilling Machines (Widma)
+  dhdSG:  "https://www.widma.com/wp-content/uploads/2022/01/sg.webp",
+  dhdMG:  "https://www.widma.com/wp-content/uploads/2022/01/mg.webp",
+  dhdUGK: "https://www.widma.com/wp-content/uploads/2022/01/ugk.webp",
+  dhdBTA: "https://www.widma.com/wp-content/uploads/2022/01/bta.webp",
 };
 
 // ─── CAD/CAM SOFTWARE ─────────────────────────────────────────────────────────
@@ -424,28 +439,309 @@ export const TurningMachines: Product[] = [
     precision: "±0.005 mm",
     applications: ["Automotive", "Farm & construction equipment", "Railways & energy", "General engineering & tooling"],
   },
+];
+
+// ─── SPECIAL PURPOSE MACHINES (Widma) ─────────────────────────────────────────
+// Purpose-built machines from widma.com/product/special-purpose-machines/.
+// Widma publishes descriptions but no per-model spec tables, so specs are kept
+// to Type/Configuration/Brand — no numbers are invented.
+
+export const SpecialPurposeMachines: Product[] = [
   {
-    id: "widma-spm",
-    name: "Widma Special Purpose Machines",
-    category: "CNC Turning",
+    id: "widma-spm-rotary-indexing",
+    name: "Multi-operation Rotary Indexing Machines",
+    category: "Special Purpose Machine",
     brand: "Widma",
-    image: IMG.vtl, // TODO(client): replace with a dedicated SPM image
-    shortDesc: "Custom-engineered machines for dedicated tasks",
+    image: IMG.spmRotaryIndex,
+    shortDesc: "Simultaneous multi-operation rotary indexing",
     description:
-      "Widma designs and builds Special Purpose Machines (SPM) tailored to a customer's specific production requirement — purpose-built solutions where a standard machine doesn't fit the application.",
+      "Rotary indexing machines designed for simultaneous execution of multiple operations — drilling, tapping, rough boring, fine boring, spot facing, and reaming — in a single automated cycle.",
     specs: {
-      "Type":          "Special Purpose Machine (SPM)",
-      "Configuration": "Custom-engineered to requirement",
+      "Type":          "Rotary indexing SPM",
+      "Operations":    "Drilling, tapping, boring, spot facing, reaming",
+      "Configuration": "Multi-station rotary index",
       "Brand":         "Widma",
     },
     features: [
-      "Fully customised to your production process",
-      "Purpose-built for dedicated machining tasks",
-      "Engineered for high-volume repeatability",
-      "Integrates with existing production lines",
-      "Backed by Widma engineering support",
+      "Multiple operations in one indexing cycle",
+      "Drilling, tapping, rough & fine boring",
+      "Spot facing and reaming stations",
+      "High-volume production throughput",
+      "Fully automated cycle",
     ],
-    applications: ["High-volume dedicated machining", "Custom production lines", "Specialised component manufacturing"],
+    applications: ["High-volume component machining", "Multi-feature parts", "Dedicated production lines"],
+  },
+  {
+    id: "widma-spm-valve-seat",
+    name: "Valve Seat Machining & Valve Guide Reaming",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmValveSeat,
+    shortDesc: "Engine cylinder-head valve seat & guide machining",
+    description:
+      "Purpose-built machines for accurate machining of valve seat profiles and valve guide reaming on engine cylinder heads, delivering the concentricity and finish critical to engine performance.",
+    specs: {
+      "Type":          "Valve seat / guide SPM",
+      "Application":   "Engine cylinder heads",
+      "Configuration": "Custom-engineered to head geometry",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Accurate valve seat profile machining",
+      "Valve guide reaming",
+      "High seat-to-guide concentricity",
+      "Optimised for cylinder-head production",
+      "Repeatable engine-grade accuracy",
+    ],
+    applications: ["Automotive engine manufacturing", "Cylinder head production", "Engine remanufacturing"],
+  },
+  {
+    id: "widma-spm-fine-boring",
+    name: "Fine Boring Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmFineBoring,
+    shortDesc: "Single/multi-spindle boring to 1-micron accuracy",
+    description:
+      "Fine boring machines available in vertical and horizontal configurations with single or multiple spindles, offering tool correction down to 1-micron diameter accuracy for precision bores.",
+    specs: {
+      "Type":          "Fine boring SPM",
+      "Configuration": "Vertical / horizontal, single or multi-spindle",
+      "Tool Correction":"Up to 1-micron diameter accuracy",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Vertical and horizontal configurations",
+      "Single or multiple spindles",
+      "1-micron diameter tool correction",
+      "High-precision bore finishing",
+      "Stable, rigid construction",
+    ],
+    precision: "±0.001 mm",
+    applications: ["Precision bore finishing", "Bearing housings", "Hydraulic components"],
+  },
+  {
+    id: "widma-spm-multi-spindle",
+    name: "Multi-spindle Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmMultiSpindle,
+    shortDesc: "Best-in-class cycle time, multiple ops at once",
+    description:
+      "Multi-spindle machines perform multiple operations simultaneously to deliver best-in-class cycle times, available in both horizontal and vertical configurations.",
+    specs: {
+      "Type":          "Multi-spindle SPM",
+      "Configuration": "Horizontal / vertical",
+      "Advantage":     "Best-in-class cycle time",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Multiple spindles working simultaneously",
+      "Best-in-class cycle time",
+      "Horizontal and vertical configurations",
+      "High productivity for mass production",
+      "Consistent multi-feature accuracy",
+    ],
+    applications: ["Mass production machining", "Multi-hole components", "High-throughput lines"],
+  },
+  {
+    id: "widma-spm-facing-centering",
+    name: "Facing & Centering Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmFacingCenter,
+    shortDesc: "Shaft facing & centering, 2 or 4 spindle",
+    description:
+      "Facing and centering machines for shaft manufacturing, available in vertical and horizontal configurations — two-spindle variants for smaller shafts and four-spindle for larger-diameter shafts.",
+    specs: {
+      "Type":          "Facing & centering SPM",
+      "Configuration": "Vertical / horizontal, 2 or 4 spindle",
+      "Application":   "Shaft ends preparation",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Two-spindle for smaller shafts",
+      "Four-spindle for larger diameters",
+      "Simultaneous facing and centering",
+      "Vertical and horizontal configurations",
+      "Accurate shaft-end preparation",
+    ],
+    applications: ["Shaft manufacturing", "Axles & spindles", "Automotive drivetrain parts"],
+  },
+  {
+    id: "widma-spm-special-milling",
+    name: "Special Milling Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmSpecialMill,
+    shortDesc: "Multi-axis milling for cams, profiles & slots",
+    description:
+      "Special milling machines with multi-axis movement and interpolation for cam lobe milling, profile milling, keyway, groove, slot, and pad milling operations.",
+    specs: {
+      "Type":          "Special milling SPM",
+      "Motion":        "Multi-axis movement & interpolation",
+      "Operations":    "Cam lobe, profile, keyway, groove, slot, pad",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Multi-axis movement and interpolation",
+      "Cam lobe and profile milling",
+      "Keyway, groove and slot milling",
+      "Pad milling capability",
+      "Configured to component geometry",
+    ],
+    applications: ["Camshaft machining", "Profiled components", "Keyway & slot production"],
+  },
+  {
+    id: "widma-spm-heavy-milling",
+    name: "Heavy Milling / Roughing Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmHeavyMill,
+    shortDesc: "High material removal at high depth of cut",
+    description:
+      "Heavy milling and roughing machines built for high material removal rates at high depth of cut, using a spindle with gearbox to deliver the cutting torque and power required.",
+    specs: {
+      "Type":          "Heavy milling / roughing SPM",
+      "Spindle":       "Geared spindle for high torque",
+      "Capability":    "High MRR at high depth of cut",
+      "Brand":         "Widma",
+    },
+    features: [
+      "High material removal rate",
+      "High depth of cut capability",
+      "Geared spindle for cutting torque and power",
+      "Rugged construction for heavy loads",
+      "Suited to large workpieces",
+    ],
+    applications: ["Heavy roughing operations", "Large castings & forgings", "Structural components"],
+  },
+  {
+    id: "widma-spm-finish-milling",
+    name: "Finish Milling Machines",
+    category: "Special Purpose Machine",
+    brand: "Widma",
+    image: IMG.spmFinishMill,
+    shortDesc: "Critical flatness, finish & milling-depth accuracy",
+    description:
+      "Finish milling machines designed to achieve critical accuracies like flatness, surface finish, and milling depth, available in horizontal or vertical configurations.",
+    specs: {
+      "Type":          "Finish milling SPM",
+      "Configuration": "Horizontal / vertical",
+      "Focus":         "Flatness, surface finish, milling depth",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Critical flatness accuracy",
+      "Fine surface finish",
+      "Precise milling depth control",
+      "Horizontal or vertical configuration",
+      "Consistent finishing quality",
+    ],
+    applications: ["Sealing face machining", "Precision flat surfaces", "Finish-critical components"],
+  },
+];
+
+// ─── DEEP HOLE DRILLING MACHINES (Widma) ──────────────────────────────────────
+// From widma.com/product/deep-hole-drilling-machines/. The four models the
+// client selected; Widma lists more that can be added later if required.
+
+export const DeepHoleDrillingMachines: Product[] = [
+  {
+    id: "widma-dhd-sg",
+    name: "Standard Gundrilling Machines (SG Series)",
+    category: "Deep Hole Drilling",
+    brand: "Widma",
+    image: IMG.dhdSG,
+    shortDesc: "Standard gundrilling for deep, straight holes",
+    description:
+      "The SG series standard gundrilling machines produce deep, straight, high-accuracy holes across a broad range of general deep-hole drilling applications.",
+    specs: {
+      "Type":          "Standard gundrilling machine",
+      "Series":        "SG",
+      "Process":       "Single-flute gundrilling",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Deep, straight hole drilling",
+      "High length-to-diameter ratios",
+      "Excellent bore straightness",
+      "Reliable single-flute gundrilling",
+      "Broad application range",
+    ],
+    applications: ["Deep hole drilling", "Hydraulic cylinders", "Molds & dies", "General engineering"],
+  },
+  {
+    id: "widma-dhd-mg",
+    name: "Micro Gundrilling Machine (MG Series)",
+    category: "Deep Hole Drilling",
+    brand: "Widma",
+    image: IMG.dhdMG,
+    shortDesc: "Small-diameter deep hole drilling",
+    description:
+      "The MG series micro gundrilling machine caters to smaller-diameter deep hole drilling applications where fine, precise holes are required.",
+    specs: {
+      "Type":          "Micro gundrilling machine",
+      "Series":        "MG",
+      "Application":   "Smaller-diameter deep holes",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Small-diameter deep hole drilling",
+      "High precision on fine holes",
+      "Excellent hole straightness",
+      "Purpose-built for micro applications",
+      "Consistent, repeatable results",
+    ],
+    applications: ["Fuel injection components", "Medical & precision parts", "Small-bore deep holes"],
+  },
+  {
+    id: "widma-dhd-ugk",
+    name: "Universal Gundrilling Machines (UGK Series)",
+    category: "Deep Hole Drilling",
+    brand: "Widma",
+    image: IMG.dhdUGK,
+    shortDesc: "Versatile gundrilling across a wide range",
+    description:
+      "The UGK series universal gundrilling machines offer flexible deep-hole drilling across a wide range of workpiece sizes and applications in a single versatile platform.",
+    specs: {
+      "Type":          "Universal gundrilling machine",
+      "Series":        "UGK",
+      "Capability":    "Wide workpiece range",
+      "Brand":         "Widma",
+    },
+    features: [
+      "Versatile universal configuration",
+      "Wide range of workpiece sizes",
+      "Deep, accurate hole drilling",
+      "Flexible setup for varied jobs",
+      "Reliable production performance",
+    ],
+    applications: ["General deep hole drilling", "Job-shop production", "Varied component sizes"],
+  },
+  {
+    id: "widma-dhd-bta-counter-boring",
+    name: "BTA Counter Boring Machines for Front Fork",
+    category: "Deep Hole Drilling",
+    brand: "Widma",
+    image: IMG.dhdBTA,
+    shortDesc: "BTA counter boring for two-wheeler front forks",
+    description:
+      "Dedicated BTA counter boring machines for front fork tubes, using the BTA process to produce accurate, high-finish internal bores for two-wheeler front-fork applications.",
+    specs: {
+      "Type":          "BTA counter boring machine",
+      "Process":       "BTA (Boring & Trepanning Association)",
+      "Application":   "Front fork tubes",
+      "Brand":         "Widma",
+    },
+    features: [
+      "BTA deep-hole counter boring",
+      "Purpose-built for front fork tubes",
+      "High internal bore accuracy",
+      "Superior bore surface finish",
+      "Optimised for two-wheeler production",
+    ],
+    applications: ["Two-wheeler front forks", "Suspension tubes", "High-volume fork production"],
   },
 ];
 
