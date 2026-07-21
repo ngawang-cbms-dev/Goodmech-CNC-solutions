@@ -7,6 +7,19 @@
  * were replaced by 3D Printers (Go3D).
  */
 
+// CAD/CAM software artwork — client-supplied images in src/assets/pictures,
+// bundled & hashed by Vite. Filenames match the category items (Issue #3).
+import imgWorkNC from '../assets/pictures/WorkNC CAM Software.jpeg';
+import imgVisi from '../assets/pictures/VISI CAD_CAM Software.jpeg';
+import imgEdgecam from '../assets/pictures/EdgeCam software.jpeg';
+import imgEsprit from '../assets/pictures/Esprit CAM Software.jpeg';
+import imgEspritEdge from '../assets/pictures/Espirit Edge CAM software.jpeg';
+// CAE/Simulation + 3D Printer artwork (client-supplied)
+import imgSimufact from '../assets/pictures/Simufact Forming & Sheet Metal.jpeg';
+import imgFTI from '../assets/pictures/FTI Forming Suite.jpeg';
+import imgGo3dFdm from '../assets/pictures/Go3D Industrial FDM 3D Printer.jpeg';
+import imgGo3dResin from '../assets/pictures/Go3D Precision Resin 3D Printer.jpeg';
+
 export interface Product {
   id: string;
   name: string;
@@ -39,12 +52,17 @@ const IMG = {
   // Turning (Widma)
   vtl:      "https://5.imimg.com/data5/SELLER/Default/2024/6/429587650/BY/IU/GP/5730925/vertical-turning-lathes-500x500.jpg",
   vt550:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517660190/SR/FA/AR/5730925/turrent-type-verticle-turning-lathes-500x500.jpg",
-  // CAD/CAM Software
-  visi:     "https://5.imimg.com/data5/SELLER/Default/2025/6/517630933/XZ/KG/RN/5730925/visi-cad-cam-software-500x500.jpg",
-  worknc:   "https://5.imimg.com/data5/SELLER/Default/2025/6/517631998/EP/WC/YT/5730925/worknc-cam-software-500x500.jpg",
-  edgecam:  "https://5.imimg.com/data5/SELLER/Default/2025/6/517631421/NX/JL/OL/5730925/edgecam-cam-software-500x500.jpg",
-  // CAE / Simulation
-  simufact: "https://5.imimg.com/data5/SELLER/Default/2024/6/430054672/NR/BR/KG/5730925/forging-simulation-software-500x500.png",
+  // CAD/CAM Software (client-supplied artwork — Issue #3)
+  visi:       imgVisi,
+  worknc:     imgWorkNC,
+  edgecam:    imgEdgecam,
+  esprit:     imgEsprit,
+  espritEdge: imgEspritEdge,
+  // CAE / Simulation + 3D Printers (client-supplied artwork — Issue #3)
+  simufact: imgSimufact,
+  fti:      imgFTI,
+  go3dFdm:  imgGo3dFdm,
+  go3dResin:imgGo3dResin,
   // Special Purpose Machines (Widma) — hotlinked from widma.com CDN
   // TODO(client): download & self-host these in /public for long-term stability.
   spmRotaryIndex: "https://www.widma.com/wp-content/uploads/2022/01/Multi-operaton-rotary-indexing-1024x683-1.webp",
@@ -180,7 +198,7 @@ export const CamSoftware: Product[] = [
     name: "Esprit CAM Software",
     category: "CAM Software",
     brand: "Esprit",
-    image: IMG.worknc,
+    image: IMG.esprit,
     shortDesc: "Mill-turn & 5-axis CAM with 3,500+ post processors",
     description:
       "Esprit is a comprehensive CAM solution supporting mill-turn, multitasking, and simultaneous 5-axis milling across diverse CNC machines. Backed by 3,500+ certified post processors for universal machine compatibility.",
@@ -207,7 +225,7 @@ export const CamSoftware: Product[] = [
     name: "Esprit EDGE CAM Software",
     category: "CAM Software",
     brand: "Esprit EDGE",
-    image: IMG.worknc, // TODO(client): replace with official Esprit EDGE image
+    image: IMG.espritEdge,
     shortDesc: "Next-generation, AI-driven CAM platform",
     description:
       "Esprit EDGE is the next-generation evolution of Esprit — an intelligent, fully integrated CAM platform with AI-assisted toolpaths, a digital machine twin, and edge-to-cloud connectivity for the modern smart factory.",
@@ -267,7 +285,7 @@ export const Simulation: Product[] = [
     name: "FTI Forming Suite",
     category: "Simulation Software",
     brand: "FTI",
-    image: IMG.simufact, // TODO(client): replace with official FTI Forming Suite image
+    image: IMG.fti,
     shortDesc: "Sheet-metal feasibility, costing & die design",
     description:
       "FTI Forming Suite delivers fast, accurate sheet-metal forming simulation — from early feasibility and material cost estimation to blank development and die-face design — helping reduce material waste and tryout time.",
@@ -753,7 +771,7 @@ export const Printers3D: Product[] = [
     name: "Go3D Industrial FDM 3D Printer",
     category: "3D Printers",
     brand: "Go3D",
-    image: IMG.simufact, // TODO(client): replace with official Go3D printer image
+    image: IMG.go3dFdm,
     shortDesc: "Large-format industrial FDM additive system",
     description:
       "The Go3D industrial FDM 3D printer produces strong, accurate functional prototypes and end-use parts from engineering-grade thermoplastics — bringing fast, in-house additive manufacturing to the shop floor.",
@@ -780,7 +798,7 @@ export const Printers3D: Product[] = [
     name: "Go3D Precision Resin 3D Printer",
     category: "3D Printers",
     brand: "Go3D",
-    image: IMG.simufact, // TODO(client): replace with official Go3D printer image
+    image: IMG.go3dResin,
     shortDesc: "High-detail SLA/DLP resin printing",
     description:
       "The Go3D resin 3D printer delivers ultra-fine surface finish and crisp detail for precision prototypes, master patterns, and intricate components using SLA/DLP photopolymer technology.",
