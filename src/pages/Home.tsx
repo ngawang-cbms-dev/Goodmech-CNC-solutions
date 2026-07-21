@@ -73,7 +73,10 @@ export const Home: React.FC = () => {
             <h1 className="anim-in text-headline-xl font-headline-xl text-white mb-6" style={{ animationDelay: '150ms' }}>
               Precision, reliability &amp;{' '}
               <span className="relative whitespace-nowrap">
-                <span className="text-gradient bg-[linear-gradient(110deg,#fff_55%,var(--color-safety-orange))]">
+                <span
+                  className="text-gradient"
+                  style={{ backgroundImage: 'linear-gradient(110deg, var(--color-secondary-fixed) 45%, var(--color-safety-orange))' }}
+                >
                   cutting-edge
                 </span>
               </span>{' '}
