@@ -29,4 +29,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.miscellounes/*
+
+# Client request screenshots — reference only, never shipped.
+# NOTE: do not ignore all of public/ — public/miscellounes/goodmech-cnc-solutions.pdf
+# is the "Download Specification Guide" link on the home page, and Vite copies
+# public/ into dist/ at build time.
+public/miscellounes/cr*.jpeg
