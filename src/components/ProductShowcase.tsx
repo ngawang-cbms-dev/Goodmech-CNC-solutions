@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../data/products';
+import { BrandTile } from './BrandTile';
 
 export interface ShowcaseCategory {
   id: string;
@@ -114,22 +115,36 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
                 <div className="md:flex md:gap-8 md:items-stretch">
                   {/* Image */}
                   <div className="relative bg-surface-muted rounded-xl overflow-hidden mb-6 md:mb-0 md:w-1/2 aspect-video md:aspect-auto">
-                    {product.brand && (
-                      <span className="absolute top-3 left-3 z-10 bg-safety-orange text-white font-label-caps px-2.5 py-1 rounded-md">
-                        {product.brand}
-                      </span>
+                    <div className="absolute top-3 left-3 z-10 flex flex-wrap gap-2">
+                      {product.heroSlug && (
+                        <span className="bg-primary text-white font-label-caps px-2.5 py-1 rounded-md">
+                          HERO PRODUCT
+                        </span>
+                      )}
+                      {product.brand && (
+                        <span className="bg-safety-orange text-white font-label-caps px-2.5 py-1 rounded-md">
+                          {product.brand}
+                        </span>
+                      )}
+                    </div>
+                    {product.image ? (
+                      <img
+                        alt={product.name}
+                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                        src={product.image}
+                      />
+                    ) : (
+                      <BrandTile wordmark={product.name} caption={product.vendor} accentVar="--color-tech-blue" />
                     )}
-                    <img
-                      alt={product.name}
-                      className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
-                      src={product.image}
-                    />
                   </div>
 
                   {/* Body */}
                   <div className="md:w-1/2 flex flex-col">
                     <h2 className="text-headline-md font-headline-md text-on-surface">{product.name}</h2>
-                    <p className="text-body-sm font-body-sm text-on-surface-variant mt-1 mb-5">
+                    {product.vendor && (
+                      <p className="font-label-caps text-on-surface-variant/70 mt-1.5">BY {product.vendor.toUpperCase()}</p>
+                    )}
+                    <p className="text-body-sm font-body-sm text-on-surface-variant mt-2 mb-5">
                       {product.shortDesc || product.description}
                     </p>
 
@@ -153,13 +168,24 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
                       ))}
                     </div>
 
-                    <Link
-                      to="/quote"
-                      className="mt-auto inline-flex justify-center items-center gap-2 bg-primary text-white py-3 rounded-md font-label-bold text-label-bold btn-press btn-sheen hover:bg-safety-orange transition-colors"
-                    >
-                      Get Quote
-                      <span className="material-symbols-outlined text-[18px]">trending_flat</span>
-                    </Link>
+                    <div className="mt-auto flex flex-col sm:flex-row gap-3">
+                      {product.heroSlug && (
+                        <Link
+                          to={product.heroSlug}
+                          className="flex-1 inline-flex justify-center items-center gap-2 border border-primary text-primary py-3 rounded-md font-label-bold text-label-bold btn-press hover:bg-primary hover:text-white transition-colors"
+                        >
+                          Full Details
+                          <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                        </Link>
+                      )}
+                      <Link
+                        to="/quote"
+                        className="flex-1 inline-flex justify-center items-center gap-2 bg-primary text-white py-3 rounded-md font-label-bold text-label-bold btn-press btn-sheen hover:bg-safety-orange transition-colors"
+                      >
+                        Get Quote
+                        <span className="material-symbols-outlined text-[18px]">trending_flat</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </article>

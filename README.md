@@ -136,4 +136,4 @@ To deploy this site:
 
 **GoodMech CNC Solutions**  
 Industrial Estate, Phagwara, Punjab - 144401, India  
-Focal Point, Kapurthala, Punjab - 144601, India - sales@goodmech.com
+Focal Point, Kapurthala, Punjab - 144601, India - munish.chopra@goodmech.in

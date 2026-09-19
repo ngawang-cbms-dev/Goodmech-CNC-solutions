@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { companyInfo, services } from '../data/company';
+import { heroProducts } from '../data/heroProducts';
 
 // Small helper for staggered reveal delays
 const delay = (ms: number) => ({ ['--reveal-delay' as string]: `${ms}ms` } as React.CSSProperties);
@@ -9,7 +10,7 @@ export const Home: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
-    product: 'CNC Vertical Machining Center',
+    product: 'Simufact Forming — Hot & Cold Forging Simulation',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -23,15 +24,9 @@ export const Home: React.FC = () => {
     }, 1200);
   };
 
-  const partners = [
-    { name: 'WIDMA', tag: 'Machining & Grinding' },
-    { name: 'VISI', tag: 'CAD/CAM Software' },
-    { name: 'WORKNC', tag: 'Toolpaths' },
-    { name: 'EDGECAM', tag: 'NC Programming' },
-    { name: 'ESPRIT', tag: 'Mill-Turn CAM' },
-    { name: 'SIMUFACT', tag: 'CAE Simulation' },
-    { name: 'GO3D', tag: '3D Printers' },
-  ];
+  // Derived from the authorisation list so the marquee can never contradict
+  // the reseller statement in the footer.
+  const partners = companyInfo.authorizations.map((a) => ({ name: a.principal, tag: a.domain }));
 
   return (
     <div className="overflow-x-hidden">
@@ -84,9 +79,9 @@ export const Home: React.FC = () => {
             </h1>
 
             <p className="anim-in text-body-lg font-body-lg text-white/70 mb-9 max-w-xl" style={{ animationDelay: '240ms' }}>
-              Goodmech CNC Solutions delivers North India's most reliable industrial engineering systems —
-              from precision Widma machines to advanced CAD/CAM, CAE simulation and 3D printing. Established in{' '}
-              {companyInfo.established}.
+              Hot &amp; cold forging simulation, 3D design and automatic CAM — alongside precision Widma CNC
+              machines and Go3D additive systems. Authorized resellers serving North India's manufacturers
+              since {companyInfo.established}.
             </p>
 
             <div className="anim-in flex flex-col sm:flex-row gap-4" style={{ animationDelay: '330ms' }}>
@@ -136,7 +131,7 @@ export const Home: React.FC = () => {
         <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant">
           {[
             { icon: 'verified', big: '27 Years', small: 'Of Experience' },
-            { icon: 'location_on', big: 'Punjab, India', small: 'Phagwara & Ludhiana HQ' },
+            { icon: 'location_on', big: 'Punjab, India', small: 'Phagwara & Kapurthala' },
             { icon: 'engineering', big: 'Complete Support', small: 'From Installation to CAM' },
           ].map((item, i) => (
             <div
@@ -154,11 +149,82 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ======================== HERO PRODUCTS ======================== */}
+      {/* The three flagship offerings. Deliberately given more weight than the
+          rest of the catalogue so a visitor sees our core strengths first. */}
+      <section className="relative py-20 md:py-24 bg-primary text-white overflow-hidden noise" id="hero-products">
+        <div className="absolute inset-0 blueprint-grid text-white opacity-[0.06]"></div>
+        <div className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-safety-orange/15 blur-[130px] pointer-events-none"></div>
+
+        <div className="relative px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+          <div className="reveal max-w-2xl mb-12">
+            <span className="font-label-caps text-safety-orange">OUR CORE STRENGTHS</span>
+            <h2 className="text-headline-lg font-headline-lg text-white mt-3 mb-4">Hero Products</h2>
+            <div className="accent-rule mb-5"></div>
+            <p className="text-body-lg font-body-lg text-white/65">
+              The three products we lead with — forging simulation, 3D design and automatic CAM. Each is supplied
+              as an authorized reseller, with in-person implementation, training and support.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            {heroProducts.map((h, i) => (
+              <Link
+                key={h.id}
+                to={h.slug}
+                className="reveal group relative flex flex-col bg-white/[0.04] border border-white/12 rounded-2xl p-8 overflow-hidden hover-lift hover:border-white/30"
+                style={{ ...delay(i * 110), ['--card-accent' as string]: `var(${h.accentVar})` }}
+              >
+                <span
+                  className="absolute inset-x-0 top-0 h-[3px]"
+                  style={{ background: 'var(--card-accent)' }}
+                ></span>
+                <span
+                  className="absolute -right-16 -top-16 w-44 h-44 rounded-full blur-3xl opacity-25 transition-opacity duration-500 group-hover:opacity-50"
+                  style={{ background: 'var(--card-accent)' }}
+                ></span>
+
+                <span
+                  className="relative w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6"
+                  style={{ background: 'var(--card-accent)' }}
+                >
+                  <span className="material-symbols-outlined text-2xl">{h.icon}</span>
+                </span>
+
+                <p className="relative text-headline-md font-headline-md leading-none tracking-tight mb-2">
+                  {h.wordmark}
+                  <span style={{ color: 'var(--card-accent)' }}>{h.wordmarkTail}</span>
+                </p>
+                <p className="relative font-label-caps text-white/45 mb-5">{h.discipline.toUpperCase()}</p>
+
+                <p className="relative text-body-sm font-body-sm text-white/70 mb-6">{h.homeBlurb}</p>
+
+                <ul className="relative space-y-2 mb-8">
+                  {h.homeBullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-body-xs font-body-xs text-white/80">
+                      <span className="material-symbols-outlined text-[16px] mt-0.5" style={{ color: 'var(--card-accent)' }}>
+                        check_circle
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+
+                <span className="relative mt-auto inline-flex items-center gap-2 font-label-bold text-label-bold text-white group-hover:gap-4 transition-all">
+                  Explore {h.navLabel}
+                  <span className="material-symbols-outlined text-[18px]">trending_flat</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===================== CORE EXPERTISE BENTO ===================== */}
       <section className="py-16 md:py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="mb-10 reveal">
-          <span className="font-label-caps text-safety-orange">WHAT WE BUILD</span>
-          <h2 className="text-headline-lg font-headline-lg text-on-surface mt-3 mb-4">Core Expertise</h2>
+          <span className="font-label-caps text-safety-orange">THE REST OF THE CATALOGUE</span>
+          <h2 className="text-headline-lg font-headline-lg text-on-surface mt-3 mb-4">Machines &amp; Additive</h2>
           <div className="accent-rule"></div>
         </div>
 
@@ -233,31 +299,26 @@ export const Home: React.FC = () => {
             </Link>
           </div>
 
-          {/* CAM Software */}
-          <div
+          {/* Special Purpose & Deep Hole Drilling */}
+          <Link
+            to="/machines"
             className="reveal md:col-span-4 bg-primary text-white p-8 rounded-2xl group hover-lift flex flex-col justify-between relative overflow-hidden noise"
             style={delay(0)}
           >
             <div className="absolute inset-0 blueprint-grid text-white opacity-[0.06]"></div>
             <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-safety-orange/20 blur-3xl"></div>
             <div className="relative">
-              <span className="material-symbols-outlined text-safety-orange text-4xl mb-8 block">terminal</span>
-              <h3 className="text-headline-md font-headline-md mb-4">VISI CAM Software</h3>
+              <span className="material-symbols-outlined text-safety-orange text-4xl mb-8 block">precision_manufacturing</span>
+              <h3 className="text-headline-md font-headline-md mb-4">Special Purpose &amp; Deep Hole Drilling</h3>
               <p className="text-body-sm font-body-sm text-white/70 mb-8">
-                The world's leading PC-based CAD/CAM solution for the Mold &amp; Die industries. Fully integrated
-                with our hardware.
+                Purpose-built Widma machines — rotary indexing, fine boring, valve seat, facing &amp; centering — plus
+                gundrilling and BTA deep-hole drilling for straight, high-accuracy bores.
               </p>
             </div>
-            <div className="relative p-4 bg-white/8 rounded-xl border border-white/15">
-              <div className="h-2 w-full bg-white/15 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-secondary-fixed to-safety-orange w-3/4 rounded-full"></div>
-              </div>
-              <div className="mt-4 flex justify-between font-label-caps">
-                <span className="text-white/60">EFFICIENCY BOOST</span>
-                <span className="text-secondary-fixed">+75%</span>
-              </div>
-            </div>
-          </div>
+            <span className="relative inline-flex items-center gap-2 font-label-bold text-label-bold text-white group-hover:gap-4 group-hover:text-safety-orange transition-all">
+              Explore Builds <span className="material-symbols-outlined">trending_flat</span>
+            </span>
+          </Link>
 
           {/* 3D Printers */}
           <Link
@@ -287,7 +348,7 @@ export const Home: React.FC = () => {
       {/* ===================== PARTNERS MARQUEE ===================== */}
       <section className="py-16 bg-primary text-white overflow-hidden">
         <p className="font-label-caps text-white/40 text-center mb-10 px-6">
-          STRATEGIC PARTNERSHIPS WITH GLOBAL LEADERS
+          AUTHORIZED RESELLERS FOR GLOBAL ENGINEERING LEADERS
         </p>
         <div className="marquee-host marquee-mask">
           <div className="marquee-track gap-16">
@@ -455,11 +516,22 @@ export const Home: React.FC = () => {
                       value={formData.product}
                       onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                     >
-                      <option>Grinding Machines</option>
-                      <option>Turning Machines</option>
-                      <option>CAD/CAM Software</option>
-                      <option>CAE/Simulation Software</option>
-                      <option>3D Printers - Go3D</option>
+                      <optgroup label="Hero Products">
+                        <option>Simufact Forming — Hot &amp; Cold Forging Simulation</option>
+                        <option>SOLIDWORKS</option>
+                        <option>WorkNC CAM</option>
+                      </optgroup>
+                      <optgroup label="Machines">
+                        <option>Grinding Machines</option>
+                        <option>Turning Machines</option>
+                        <option>Special Purpose Machines</option>
+                        <option>Deep Hole Drilling Machines</option>
+                      </optgroup>
+                      <optgroup label="Software &amp; Additive">
+                        <option>CAD/CAM Software</option>
+                        <option>CAE/Simulation Software</option>
+                        <option>3D Printers - Go3D</option>
+                      </optgroup>
                     </select>
                   </div>
                   <button

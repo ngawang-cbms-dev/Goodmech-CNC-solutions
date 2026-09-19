@@ -1,8 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { companyInfo } from '../data/company';
+import { heroProducts } from '../data/heroProducts';
+import logo from '../assets/logo.png';
 
+/**
+ * Deliberately short. An earlier revision carried 37 links across five sections
+ * and ran ~1,100px tall, mostly by stating the same thing twice — the reseller
+ * band repeated the principals already listed under PRODUCTS, and RESOURCES
+ * pointed at routes linked two columns over. This keeps the client's requested
+ * CAE / CAM / CAD / CNC / 3D mapping and the three HERO products; everything
+ * else is one click away on the category pages.
+ */
 export const Footer: React.FC = () => {
+  const [primaryPhone] = companyInfo.phones;
+  const [primaryEmail] = companyInfo.emails;
+  const [headOffice, ...otherOffices] = companyInfo.locations;
+
   return (
     <footer className="relative bg-primary text-white overflow-hidden noise">
       <div className="absolute inset-0 blueprint-grid text-white opacity-[0.05]"></div>
@@ -29,16 +43,14 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Columns */}
-      <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-x-gutter gap-y-12 px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
-        <div className="col-span-2 lg:col-span-1">
-          <div className="flex items-center mb-5">
-            <span className="inline-flex items-center bg-white rounded-md px-3 py-2 shadow-sm">
-              <img src="miscellounes/logo.jpeg" alt="Goodmech CNC Solutions" className="h-8 w-auto object-contain" />
-            </span>
-          </div>
-          <p className="text-body-sm font-body-sm text-white/55 mb-6 max-w-xs">
-            Authorized dealers for world-class CNC solutions in Phagwara and Kapurthala. Precision engineering
-            partners since {companyInfo.established}.
+      <div className="relative grid grid-cols-2 lg:grid-cols-12 gap-x-gutter gap-y-10 px-margin-mobile md:px-margin-desktop py-14 max-w-container-max mx-auto">
+        {/* Brand — carries the reseller statement so it needs no band of its own */}
+        <div className="col-span-2 lg:col-span-4">
+          <span className="inline-flex items-center">
+            <img src={logo} alt="Goodmech CNC Solutions" className="h-8 md:h-30 w-auto" />
+          </span>
+          <p className="text-body-sm font-body-sm text-white/55 mb-6 max-w-sm">
+            {companyInfo.resellerStatement}
           </p>
           <div className="flex gap-3">
             <a
@@ -46,7 +58,7 @@ export const Footer: React.FC = () => {
               href={companyInfo.web.indiamart}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="IndiaMART"
+              aria-label="Company profile on IndiaMART"
             >
               <span className="material-symbols-outlined text-[18px]">storefront</span>
             </a>
@@ -61,7 +73,7 @@ export const Footer: React.FC = () => {
             </a>
             <a
               className="w-10 h-10 bg-white/8 border border-white/10 rounded-lg flex items-center justify-center hover:bg-safety-orange hover:border-safety-orange transition-all btn-press"
-              href={`mailto:${companyInfo.primaryContact.email}`}
+              href={primaryEmail.href}
               aria-label="Email"
             >
               <span className="material-symbols-outlined text-[18px]">mail</span>
@@ -69,43 +81,64 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div>
+        {/* Portfolio — one row per principal, no sub-bullets */}
+        <div className="col-span-1 lg:col-span-3">
           <p className="font-label-caps text-safety-orange mb-5">PRODUCTS</p>
-          <ul className="space-y-3.5">
-            <li><Link to="/machines" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Grinding Machines</Link></li>
-            <li><Link to="/machines" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Turning Machines</Link></li>
-            <li><Link to="/printers" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">3D Printers - Go3D</Link></li>
+          <ul className="space-y-4">
+            {companyInfo.authorizations.map((a) => (
+              <li key={a.id}>
+                <Link to={a.to} className="group block">
+                  <span className="block font-label-bold text-label-bold text-white group-hover:text-safety-orange transition-colors">
+                    {a.heading}
+                  </span>
+                  <span className="block font-label-caps text-white/35 mt-0.5">{a.principal}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div>
-          <p className="font-label-caps text-safety-orange mb-5">RESOURCES</p>
-          <ul className="space-y-3.5">
-            <li><Link to="/software" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">CAD/CAM Software</Link></li>
-            <li><Link to="/cae" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">CAE/Simulation Software</Link></li>
-            <li><Link to="/quote" className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm">Technical Support</Link></li>
-            <li><a className="text-white/60 hover:text-white link-underline text-body-sm font-body-sm" href={companyInfo.web.indiamart} target="_blank" rel="noopener noreferrer">Company Profile</a></li>
+        {/* The three flagship products */}
+        <div className="col-span-1 lg:col-span-2">
+          <p className="font-label-caps text-safety-orange mb-5">HERO PRODUCTS</p>
+          <ul className="space-y-4">
+            {heroProducts.map((h) => (
+              <li key={h.id}>
+                <Link to={h.slug} className="group block">
+                  <span className="block font-label-bold text-label-bold text-white group-hover:text-safety-orange transition-colors">
+                    {h.navLabel}
+                  </span>
+                  <span className="block font-label-caps text-white/35 mt-0.5">{h.navHint}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="col-span-2 lg:col-span-1">
-          <p className="font-label-caps text-safety-orange mb-5">HEADQUARTERS</p>
+        {/* Contact — head office in full, the rest as a single line */}
+        <div className="col-span-2 lg:col-span-3">
+          <p className="font-label-caps text-safety-orange mb-5">CONTACT</p>
           <div className="text-body-sm font-body-sm text-white/60 space-y-4">
             <div className="flex items-start gap-2.5">
               <span className="material-symbols-outlined text-[18px] mt-0.5 text-white/40">location_on</span>
-              <span>Ludhiana,<br />Punjab - 144401</span>
-            </div>
-            <div className="flex items-start gap-2.5">
-              <span className="material-symbols-outlined text-[18px] mt-0.5 text-white/40">location_on</span>
-              <span>Focal Point, Kapurthala,<br />Punjab - 144601</span>
+              <span>
+                {headOffice.lines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+                {otherOffices.length > 0 && (
+                  <span className="block text-white/40 mt-1.5">
+                    Also in {otherOffices.map((o) => o.region).join(' & ')}
+                  </span>
+                )}
+              </span>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="material-symbols-outlined text-[18px] text-white/40">call</span>
-              <a href={`tel:${companyInfo.primaryContact.phone}`} className="hover:text-white transition-colors">{companyInfo.primaryContact.phone}</a>
+              <a href={primaryPhone.href} className="hover:text-white transition-colors">{primaryPhone.value}</a>
             </div>
             <div className="flex items-center gap-2.5">
               <span className="material-symbols-outlined text-[18px] text-white/40">mail</span>
-              <a href={`mailto:${companyInfo.primaryContact.email}`} className="hover:text-white transition-colors">{companyInfo.primaryContact.email}</a>
+              <a href={primaryEmail.href} className="hover:text-white transition-colors">{primaryEmail.value}</a>
             </div>
           </div>
         </div>

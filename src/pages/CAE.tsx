@@ -5,11 +5,11 @@ import { Simulation, QualityAnalysis } from '../data/products';
 const categories: ShowcaseCategory[] = [
   {
     id: 'simulation',
-    icon: 'science',
-    label: 'Simulation',
-    title: 'CAE / Simulation Software',
+    icon: 'local_fire_department',
+    label: 'Forging & Forming Simulation',
+    title: 'Forging & Forming Simulation',
     blurb:
-      'FEA-based process simulation — Simufact Forming & Sheet Metal and FTI Forming Suite — to validate forging, forming and sheet-metal processes before cutting metal.',
+      'Simufact Forming from Cadence Design Systems is our HERO product for hot & cold forging simulation, alongside FTI Forming Suite for sheet-metal feasibility — validate the process before a die is cut.',
     products: Simulation,
   },
   {

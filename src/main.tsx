@@ -9,6 +9,9 @@ import { Software } from './pages/Software'
 import { CAE } from './pages/CAE'
 import { Printers } from './pages/Printers'
 import { Quote } from './pages/Quote'
+import { Simufact } from './pages/Simufact'
+import { Solidworks } from './pages/Solidworks'
+import { WorkNC } from './pages/WorkNC'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +24,10 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/cae" element={<CAE />} />
           <Route path="/printers" element={<Printers />} />
           <Route path="/quote" element={<Quote />} />
+          {/* HERO products — dedicated pages, see src/data/heroProducts.ts */}
+          <Route path="/simufact" element={<Simufact />} />
+          <Route path="/solidworks" element={<Solidworks />} />
+          <Route path="/worknc" element={<WorkNC />} />
         </Route>
       </Routes>
     </Router>

@@ -122,12 +122,23 @@ export const Quote: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                     >
                       <option value="">Select a product category</option>
-                      <option>Grinding Machines</option>
-                      <option>Turning Machines</option>
-                      <option>CAD/CAM Software</option>
-                      <option>CAE/Simulation Software</option>
-                      <option>3D Printers - Go3D</option>
-                      <option>Custom Tooling Solutions</option>
+                      <optgroup label="Hero Products">
+                        <option>Simufact Forming — Hot &amp; Cold Forging Simulation</option>
+                        <option>SOLIDWORKS</option>
+                        <option>WorkNC CAM</option>
+                      </optgroup>
+                      <optgroup label="CNC Machines">
+                        <option>Grinding Machines</option>
+                        <option>Turning Machines</option>
+                        <option>Special Purpose Machines</option>
+                        <option>Deep Hole Drilling Machines</option>
+                      </optgroup>
+                      <optgroup label="Software &amp; Additive">
+                        <option>CAD/CAM Software</option>
+                        <option>CAE/Simulation Software</option>
+                        <option>3D Printers - Go3D</option>
+                        <option>Custom Tooling Solutions</option>
+                      </optgroup>
                     </select>
                   </div>
                   <div className="md:col-span-2">
@@ -188,18 +199,32 @@ export const Quote: React.FC = () => {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-white/50 text-[20px]">location_on</span>
-                    <div className="text-body-sm font-body-sm text-white/70">
-                      <strong className="text-white">Headquarters:</strong><br />
-                      11B/1, New Model Town, Phagwara, Punjab, India (144401)<br />
-                      4C, 4th Floor, SCO 17, Gol Market, Opposite FCI Godowns, Metro Road, Jamalpur Phase 3, Ludhiana
+                  {companyInfo.locations.map((loc) => (
+                    <div key={loc.name} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-white/50 text-[20px]">location_on</span>
+                      <div className="text-body-sm font-body-sm text-white/70">
+                        <strong className="text-white">{loc.name}</strong>
+                        <br />
+                        {loc.lines.join(', ')}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-white/50 text-[20px]"><a href="mailto:munish.chopra@goodmech.in">mail</a></span>
-                    <span className="text-body-sm font-body-sm text-white/70"><a href="mailto:munish.chopra@goodmech.in">munish.chopra@goodmech.in</a></span>
-                  </div>
+                  ))}
+                  {companyInfo.phones.map((phone) => (
+                    <div key={phone.value} className="flex items-center gap-3">
+                      <span className="material-symbols-outlined text-white/50 text-[20px]">call</span>
+                      <a className="text-body-sm font-body-sm text-white/70 hover:text-white transition-colors" href={phone.href}>
+                        {phone.value}
+                      </a>
+                    </div>
+                  ))}
+                  {companyInfo.emails.map((email) => (
+                    <div key={email.value} className="flex items-center gap-3">
+                      <span className="material-symbols-outlined text-white/50 text-[20px]">mail</span>
+                      <a className="text-body-sm font-body-sm text-white/70 hover:text-white transition-colors" href={email.href}>
+                        {email.value}
+                      </a>
+                    </div>
+                  ))}
                 </div>
                 <div className="mt-8">
                   <a
@@ -221,7 +246,7 @@ export const Quote: React.FC = () => {
               <div className="space-y-3">
                 {[
                   { icon: 'verified', label: '27 Years of Experience' },
-                  { icon: 'precision_manufacturing', label: 'Authorized WIDMA Dealer, Dessualt Systems, Hexagon, Cadence, Widma & GO3D'},
+                  { icon: 'precision_manufacturing', label: 'Authorized reseller — Cadence, Hexagon, Dassault Systèmes, WIDMA & GO3D' },
                   { icon: 'support_agent', label: '24/7 Tech Support' },
                 ].map((c, i, arr) => (
                   <div

@@ -24,14 +24,20 @@ export interface Product {
   id: string;
   name: string;
   category: string;
-  image: string;
+  /** Optional — cards fall back to a branded wordmark tile when absent. */
+  image?: string;
   description: string;
   shortDesc?: string;
   specs?: Record<string, string>;
   features: string[];
   precision?: string;
   applications?: string[];
+  /** Product/line name shown on the card badge, e.g. "WorkNC". */
   brand?: string;
+  /** Principal whose portfolio this belongs to, e.g. "Dassault Systèmes". */
+  vendor?: string;
+  /** Set on HERO products — links the card through to its dedicated page. */
+  heroSlug?: string;
 }
 
 export interface ProductCategory {
@@ -81,13 +87,15 @@ const IMG = {
 };
 
 // ─── CAD/CAM SOFTWARE ─────────────────────────────────────────────────────────
-// VISI is a full CAD/CAM platform and intentionally appears in both lists.
+// VISI is a full CAD/CAM platform; it is listed under CAM only — CAD is the
+// Dassault Systemes (SOLIDWORKS) portfolio per the 2026 client brief.
 
 const visi: Product = {
   id: "visi-cad",
   name: "VISI CAD/CAM Software",
   category: "CAD/CAM Software",
   brand: "VISI",
+  vendor: "Hexagon Manufacturing Intelligence",
   image: IMG.visi,
   shortDesc: "World-leading mould & die CAD/CAE/CAM",
   description:
@@ -111,45 +119,56 @@ const visi: Product = {
   applications: ["Injection mould design", "Die manufacture", "Stamping tools", "Complex 5-axis programming"],
 };
 
-const designer: Product = {
-  id: "designer-cad",
-  name: "Designer CAD",
+/**
+ * HERO PRODUCT — SOLIDWORKS (Dassault Systèmes).
+ * Carried in its own right rather than under the Dassault Systèmes banner:
+ * the card badge reads SOLIDWORKS and the vendor line is the fine print.
+ */
+export const solidworks: Product = {
+  id: "solidworks",
+  name: "SOLIDWORKS",
   category: "CAD Software",
-  brand: "Designer",
-  image: IMG.visi, // TODO(client): replace with official Designer image
-  shortDesc: "Direct-modelling CAD for fast design edits",
+  brand: "SOLIDWORKS",
+  vendor: "Dassault Systèmes",
+  heroSlug: "/solidworks",
+  shortDesc: "3D design & engineering platform from Dassault Systèmes",
   description:
-    "Designer is a powerful direct-modelling CAD environment for creating and editing 3D geometry without history-tree constraints — ideal for fast concept work, reverse-engineering, and preparing models for downstream CAM and simulation.",
+    "SOLIDWORKS has recently been added to the Goodmech portfolio and is an important strategic product for us. It covers part and assembly modelling, bills of materials and production drawings, in Standard, Professional and Premium packages — with Simulation, PDM, CAM and other capabilities available as separately licensed add-ons.",
   specs: {
-    "Type":     "CAD Software",
-    "Modelling":"Direct (history-free) modelling",
+    "Type":     "3D CAD / Design Platform",
+    "Publisher":"Dassault Systèmes",
+    "Packages": "Standard · Professional · Premium",
+    "Add-ons":  "Simulation, PDM, CAM, Electrical, MBD (licensed separately)",
     "Platform": "Windows PC",
-    "License":  "Lifetime, single-user",
     "Demo":     "Free demo available",
   },
   features: [
-    "History-free direct modelling",
-    "Rapid concept and design edits",
-    "Reverse-engineering of imported geometry",
-    "Wide neutral-format import/export",
-    "Seamless hand-off to CAM & simulation",
+    "Single and multi-body part models, assemblies & BOMs",
+    "2D layouts from sketches and sketch blocks, plus 3D sketches",
+    "Production drawings associative to the 3D model",
+    "Professional adds component library, rendering & costing",
+    "Premium adds stress testing, motion simulation & automation",
+    "Simulation, PDM, CAM, Electrical & MBD as separate add-on licences",
   ],
-  applications: ["Concept design", "Reverse engineering", "Model repair & prep", "Design editing"],
+  applications: ["Product & machine design", "Tooling, jigs & fixtures", "Sheet-metal fabrication", "Design validation & documentation"],
 };
 
 export const CamSoftware: Product[] = [
   {
     id: "worknc-cam",
-    name: "WorkNC CAM Software",
+    name: "WorkNC CAM",
     category: "CAM Software",
     brand: "WorkNC",
+    vendor: "Hexagon Manufacturing Intelligence",
+    heroSlug: "/worknc",
     image: IMG.worknc,
-    shortDesc: "Premier 2–5 axis CAM for tooling & mould/die",
+    shortDesc: "Automatic 2–5 axis CAM for mould, die & tooling",
     description:
-      "WorkNC is a premier CAM system for 2 to 5-axis CNC programming specifically developed for the tooling, mould and die industry. Known for its automatic toolpath generation and robust collision detection.",
+      "WorkNC is a CAM system for mould, die and tooling work, built around automatic toolpath generation. Rest machining runs on a dynamic stock model with collision detection and automatic stock updates, and the Auto5 module converts proven 3-axis toolpaths into collision-free 5-axis ones.",
     specs: {
       "Type":     "CAM Software",
-      "Axes":     "2 to 5-axis",
+      "Publisher":"Hexagon Manufacturing Intelligence",
+      "Axes":     "2 to 5-axis (incl. Auto5 conversion)",
       "Platform": "Windows PC",
       "License":  "Lifetime, single-user",
       "Training": "In-person support included",
@@ -171,6 +190,7 @@ export const CamSoftware: Product[] = [
     name: "Edgecam Software",
     category: "CAM Software",
     brand: "Edgecam",
+    vendor: "Hexagon Manufacturing Intelligence",
     image: IMG.edgecam,
     shortDesc: "Market-leading NC programming for turning, milling & EDM",
     description:
@@ -198,6 +218,7 @@ export const CamSoftware: Product[] = [
     name: "Esprit CAM Software",
     category: "CAM Software",
     brand: "Esprit",
+    vendor: "Hexagon Manufacturing Intelligence",
     image: IMG.esprit,
     shortDesc: "Mill-turn & 5-axis CAM with 3,500+ post processors",
     description:
@@ -225,6 +246,7 @@ export const CamSoftware: Product[] = [
     name: "Esprit EDGE CAM Software",
     category: "CAM Software",
     brand: "Esprit EDGE",
+    vendor: "Hexagon Manufacturing Intelligence",
     image: IMG.espritEdge,
     shortDesc: "Next-generation, AI-driven CAM platform",
     description:
@@ -249,42 +271,48 @@ export const CamSoftware: Product[] = [
   },
 ];
 
-export const CadSoftware: Product[] = [visi, designer];
+// CAD is a Dassault Systèmes portfolio — SOLIDWORKS is the headline product.
+export const CadSoftware: Product[] = [solidworks];
 
 // ─── CAE / SIMULATION SOFTWARE ────────────────────────────────────────────────
 
 export const Simulation: Product[] = [
   {
     id: "simufact-forming",
-    name: "Simufact Forming & Sheet Metal",
-    category: "Simulation Software",
-    brand: "Simufact",
+    name: "Simufact Forming",
+    category: "Hot & Cold Forging Simulation",
+    brand: "Simufact Forming",
+    vendor: "Cadence Design Systems",
+    heroSlug: "/simufact",
     image: IMG.simufact,
-    shortDesc: "FEA-based forming, forging & sheet-metal simulation",
+    shortDesc: "Hot & cold forging simulation — the capability we lead with",
     description:
-      "Simufact Forming is an advanced FEA-based process simulation suite for forging, forming, and sheet-metal operations. Reduce physical trials and optimise process parameters virtually before cutting metal.",
+      "Simufact Forming applies finite-element and finite-volume simulation to forging, cold forming and rolling. It shows material flow, die loads and die stress, and gives early detection of underfill, folds, laps and cracks — before the tooling is cut. Hot and cold forging simulation is the capability Goodmech leads with in its CAE portfolio.",
     specs: {
-      "Type":      "FEA Simulation Software",
-      "Processes": "Forging, Forming, Sheet Metal",
+      "Type":      "Forming & Forging Process Simulation",
+      "Publisher": "Cadence Design Systems",
+      "Processes": "Forging, cold forming, sheet metal, rolling, mechanical joining",
+      "Solver":    "Finite element & finite volume method",
       "Platform":  "Windows PC",
       "License":   "Lifetime, single-user",
       "Demo":      "Free demo available",
     },
     features: [
-      "Advanced FEA forming & sheet-metal simulation",
-      "Forging, stamping & deep-drawing coverage",
-      "Material behaviour and flow analysis",
-      "Defect prediction & die stress analysis",
-      "Integration with major CAD platforms",
-      "Reduces physical prototyping cost",
+      "Hot forging and cold forming in one platform",
+      "Early detection of underfill, cracks, folds & laps",
+      "Die load evaluation and residual stress in the part",
+      "Tool and die stress analysis",
+      "Microstructure simulation & heat-treatment properties",
+      "Open-die forging, rolling & ring rolling",
     ],
-    applications: ["Forging die design", "Sheet-metal forming", "Material flow analysis", "Virtual process validation"],
+    applications: ["Forging die design", "Preform & flash development", "Die load evaluation", "Rolling & ring rolling"],
   },
   {
     id: "fti-forming-suite",
     name: "FTI Forming Suite",
     category: "Simulation Software",
     brand: "FTI",
+    vendor: "Cadence Design Systems",
     image: IMG.fti,
     shortDesc: "Sheet-metal feasibility, costing & die design",
     description:
@@ -314,6 +342,7 @@ export const QualityAnalysis: Product[] = [
     name: "Q-DAS Quality Data Analysis",
     category: "Quality Analysis Software",
     brand: "Q-DAS",
+    vendor: "Hexagon Manufacturing Intelligence",
     image: IMG.simufact, // TODO(client): replace with official Q-DAS image
     shortDesc: "Statistical quality & SPC data analysis",
     description:
