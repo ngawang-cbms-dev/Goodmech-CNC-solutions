@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png'
+
 
 /** Brand logo — the goodmech image sits on a white badge so it reads cleanly
  *  over both the dark transparent-hero header and the solid scrolled header.
  *  TODO(client): swap for a transparent-background PNG/SVG when available. */
 const LogoMark: React.FC = () => (
-  <span className="inline-flex items-center bg-white rounded-md px-2.5 py-1.5 shadow-sm border border-black/5">
-    <img src="miscellounes/logo.jpeg" alt="Goodmech CNC Solutions" className="h-7 w-auto object-contain" />
-  </span>
+    <img src={logo} alt="Goodmech CNC Solutions" className="h-8 md:h-18 w-auto" />
 );
 
 export const Header: React.FC = () => {

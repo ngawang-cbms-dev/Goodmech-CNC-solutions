@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Floating spec chips */}
-            <div className="anim-in mt-8 md:mt-10 flex flex-wrap gap-3" style={{ animationDelay: '420ms' }}>
+            {/* <div className="anim-in mt-8 md:mt-10 flex flex-wrap gap-3" style={{ animationDelay: '420ms' }}>
               {[
                 { k: 'SPINDLE', v: '12,000 RPM' },
                 { k: 'ACCURACY', v: '±0.005 mm' },
@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
                   <span className="font-headline-md text-[18px] text-white">{s.v}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 

@@ -183,7 +183,7 @@ export const Quote: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-headline-md font-headline-md text-white leading-tight">M Chopra</h3>
+                    <h3 className="text-headline-md font-headline-md text-white leading-tight">Munish Chopra</h3>
                     <p className="font-label-caps text-safety-orange mt-1">DIRECTOR</p>
                   </div>
                 </div>
@@ -192,13 +192,13 @@ export const Quote: React.FC = () => {
                     <span className="material-symbols-outlined text-white/50 text-[20px]">location_on</span>
                     <div className="text-body-sm font-body-sm text-white/70">
                       <strong className="text-white">Headquarters:</strong><br />
-                      Industrial Area, Phagwara<br />
-                      Kapurthala, Punjab
+                      11B/1, New Model Town, Phagwara, Punjab, India (144401)<br />
+                      4C, 4th Floor, SCO 17, Gol Market, Opposite FCI Godowns, Metro Road, Jamalpur Phase 3, Ludhiana
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-white/50 text-[20px]">mail</span>
-                    <span className="text-body-sm font-body-sm text-white/70">sales@goodmech.com</span>
+                    <span className="material-symbols-outlined text-white/50 text-[20px]"><a href="mailto:munish.chopra@goodmech.in">mail</a></span>
+                    <span className="text-body-sm font-body-sm text-white/70"><a href="mailto:munish.chopra@goodmech.in">munish.chopra@goodmech.in</a></span>
                   </div>
                 </div>
                 <div className="mt-8">
@@ -221,7 +221,7 @@ export const Quote: React.FC = () => {
               <div className="space-y-3">
                 {[
                   { icon: 'verified', label: '27 Years of Experience' },
-                  { icon: 'precision_manufacturing', label: 'Authorized WIDMA Dealer' },
+                  { icon: 'precision_manufacturing', label: 'Authorized WIDMA Dealer, Dessualt Systems, Hexagon, Cadence, Widma & GO3D'},
                   { icon: 'support_agent', label: '24/7 Tech Support' },
                 ].map((c, i, arr) => (
                   <div
