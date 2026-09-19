@@ -12,9 +12,9 @@
  * SOURCING RULE — every claim on these pages must trace to one of:
  *   (a) src/data/company.ts  — services, locations, values the client approved
  *   (b) Munish Chopra's brief (2026-09) — the HERO positioning and his wording
- *   (c) a verified vendor page — see docs/content-verification.md for the list
+ *   (c) a verified vendor page
  * Nothing about Goodmech's own history, customer base or bespoke services is
- * asserted here. Items awaiting client confirmation live in that same doc.
+ * asserted here.
  */
 
 import imgSimufact from '../assets/pictures/Simufact Forming & Sheet Metal.jpeg';
@@ -346,6 +346,3 @@ export const workncHero: HeroProduct = {
 
 /** Display order across the site: forging first, then CAD, then CAM. */
 export const heroProducts: HeroProduct[] = [simufactHero, solidworksHero, workncHero];
-
-export const heroProductBySlug = (slug: string): HeroProduct | undefined =>
-  heroProducts.find((h) => h.slug === slug);

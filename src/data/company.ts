@@ -4,9 +4,9 @@
  */
 
 // Principal logos supplied by the client (2026-09). Only Cadence and Hexagon so
-// far — Dassault Systèmes, WIDMA and GO3D are on the checklist in
-// docs/content-verification.md. Cadence was cropped to its wordmark (the
-// original had 67% empty canvas) and downscaled to 1200px for badge use.
+// far — Dassault Systèmes, WIDMA and GO3D are still outstanding. Cadence was
+// cropped to its wordmark (the original had 67% empty canvas) and downscaled
+// to 1200px for badge use.
 import logoCadence from '../assets/pictures/cadence-Logo.png';
 import logoHexagon from '../assets/pictures/hexagon-logo.webp';
 
@@ -38,8 +38,6 @@ export interface Authorization {
 }
 
 export const companyInfo = {
-  name: "Goodmech CNC Solutions",
-  tagline: "Precision, reliability, and cutting-edge technology",
   established: 2022,
 
   // Locations. The Phagwara registered office and the Ludhiana office are the
@@ -168,51 +166,6 @@ export const companyInfo = {
    */
   resellerStatement:
     "Authorized resellers of Cadence Design Systems, Hexagon Manufacturing Intelligence and Dassault Systèmes for CAE/CAM & CAD software, WIDMA for CNC machines and GO3D for 3D printers.",
-
-  // Company details
-  details: {
-    nature: "Trader - Wholesaler/Distributor",
-    employees: "Upto 10 People",
-    certification: "Authorized WIDMA (Kennametal) Dealer"
-  },
-
-  // About text
-  about: `Goodmech CNC Solutions, based in Phagwara, Punjab, is a trusted dealer of WIDMA (Kennametal) CNC grinding & turning machines, world-class CAD/CAM and CAE simulation software, and Go3D 3D printers, backed by 27 years of industry experience.
-
-We are committed to delivering precision, reliability, and cutting-edge technology to meet the evolving needs of the manufacturing industry. With a focus on quality and customer satisfaction, we serve a wide range of industrial clients across India.
-
-Partner with us for advanced CNC solutions that drive productivity and innovation.`,
-
-  // Key values
-  values: [
-    {
-      title: "27 Years Experience",
-      description: "Industry expertise and proven track record",
-      icon: "verified"
-    },
-    {
-      title: "Authorized WIDMA Dealer",
-      description: "Genuine Kennametal-WIDMA machines & support",
-      icon: "badge"
-    },
-    {
-      title: "Complete Support",
-      description: "From Installation to CAM integration",
-      icon: "engineering"
-    },
-    {
-      title: "24/7 Technical Support",
-      description: "Dedicated engineering team always ready",
-      icon: "support_agent"
-    }
-  ],
-
-  // Certifications
-  certifications: [
-    "27 Years of Experience",
-    "Authorized WIDMA Dealer",
-    "24/7 Tech Support"
-  ]
 };
 
 /**
@@ -222,34 +175,6 @@ Partner with us for advanced CNC solutions that drive productivity and innovatio
  */
 export const vendorLogoFor = (vendor?: string): string | undefined =>
   companyInfo.authorizations.find((a) => a.principal === vendor)?.logo;
-
-// FAQ data
-export const faqData = [
-  {
-    question: "What makes Goodmech CNC Solutions different?",
-    answer: "We combine cutting-edge technology with personalized service. Our team of experts provides not just machines, but complete solutions tailored to your manufacturing needs."
-  },
-  {
-    question: "Do you provide installation and training?",
-    answer: "Yes, we offer comprehensive installation, calibration, and operator training at your facility to ensure you get maximum value from your CNC investment."
-  },
-  {
-    question: "What is your warranty and after-sales support?",
-    answer: "All our machines come with comprehensive warranty and lifetime technical support. We have a dedicated team available 24/7 for emergency assistance."
-  },
-  {
-    question: "Can you customize machines for specific requirements?",
-    answer: "Absolutely. We work with customers to understand their specific needs and can configure machines, add accessories, or integrate specialized software solutions."
-  },
-  {
-    question: "What is your lead time for delivery?",
-    answer: "Standard lead time is 4-6 weeks from order. We can often expedite for urgent requirements. Contact us for specific delivery schedules."
-  },
-  {
-    question: "Do you support older machine models?",
-    answer: "Yes, we provide parts, service, and upgrades for a wide range of CNC machines, including legacy systems."
-  }
-];
 
 // Service offerings
 export const services = [

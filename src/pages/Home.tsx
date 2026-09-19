@@ -399,7 +399,7 @@ export const Home: React.FC = () => {
               ))}
             </div>
             <a
-              href="miscellounes/goodmech-cnc-solutions.pdf"
+              href={`${import.meta.env.BASE_URL}goodmech-cnc-solutions.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               data-magnetic="0.2"

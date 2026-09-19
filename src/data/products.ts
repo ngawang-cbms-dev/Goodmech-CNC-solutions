@@ -40,14 +40,6 @@ export interface Product {
   heroSlug?: string;
 }
 
-export interface ProductCategory {
-  id: string;
-  name: string;
-  icon: string;
-  description: string;
-  products: Product[];
-}
-
 // ─── Image URLs (sourced from IndiaMART CDN) ─────────────────────────────────
 // TODO(client): supply official product images for the new software / 3D-printer
 // entries and for the Widma turning machines flagged below.

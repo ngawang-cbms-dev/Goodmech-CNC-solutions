@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../data/products';
+import { companyInfo } from '../data/company';
 import { BrandTile } from './BrandTile';
 import { VendorLogo } from './VendorLogo';
 
@@ -93,7 +94,7 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
                 <h3 className="font-headline-md text-headline-md mb-2">Technical Support</h3>
                 <p className="text-body-sm font-body-sm text-white/65 mb-5">Connect with our engineering team for custom configurations.</p>
                 <a
-                  href="https://wa.me/919742665115"
+                  href={companyInfo.web.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full justify-center items-center gap-2 bg-white/10 border border-white/20 text-white py-3 rounded-lg hover:bg-white/20 transition-colors font-label-bold text-label-bold btn-press"
