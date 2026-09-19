@@ -3,6 +3,13 @@
  * Centralized source for all company details, contact, and branding
  */
 
+// Principal logos supplied by the client (2026-09). Only Cadence and Hexagon so
+// far — Dassault Systèmes, WIDMA and GO3D are on the checklist in
+// docs/content-verification.md. Cadence was cropped to its wordmark (the
+// original had 67% empty canvas) and downscaled to 1200px for badge use.
+import logoCadence from '../assets/pictures/cadence-Logo.png';
+import logoHexagon from '../assets/pictures/hexagon-logo.webp';
+
 /**
  * A single reachable contact point (phone / email). Kept as arrays so the
  * footer can list several numbers and mailboxes as the client requested.
@@ -26,6 +33,8 @@ export interface Authorization {
   products: { label: string; to: string; hero?: boolean }[];
   /** Route for the domain heading itself. */
   to: string;
+  /** Principal's logo, when the client has supplied one. Dark-on-light. */
+  logo?: string;
 }
 
 export const companyInfo = {
@@ -94,6 +103,7 @@ export const companyInfo = {
       id: "cadence",
       heading: "CAE",
       principal: "Cadence Design Systems",
+      logo: logoCadence,
       domain: "CAE / Simulation Software",
       products: [
         { label: "Simufact Forming", to: "/simufact", hero: true },
@@ -105,6 +115,7 @@ export const companyInfo = {
       id: "hexagon",
       heading: "CAM",
       principal: "Hexagon Manufacturing Intelligence",
+      logo: logoHexagon,
       domain: "CAM Software",
       products: [
         { label: "WorkNC", to: "/worknc", hero: true },
@@ -203,6 +214,14 @@ Partner with us for advanced CNC solutions that drive productivity and innovatio
     "24/7 Tech Support"
   ]
 };
+
+/**
+ * Logo for a product's `vendor` string, or undefined when the client has not
+ * supplied one. `Product.vendor` and `Authorization.principal` share the same
+ * exact names, so this is a plain lookup — no per-product annotation needed.
+ */
+export const vendorLogoFor = (vendor?: string): string | undefined =>
+  companyInfo.authorizations.find((a) => a.principal === vendor)?.logo;
 
 // FAQ data
 export const faqData = [

@@ -53,35 +53,35 @@ export interface ProductCategory {
 // entries and for the Widma turning machines flagged below.
 const IMG = {
   // Grinding (Widma)
-  hg200:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517664964/RS/OQ/HY/5730925/widma-hobgrind-hg-200-tool-grinding-machine-500x500.jpeg",
-  rx5neo:   "https://5.imimg.com/data5/SELLER/Default/2025/6/517663753/FE/AX/JK/5730925/widma-ecogrind-rx5-neo-tool-grinding-machine-1000x1000.jpg",
+  hg200: "https://5.imimg.com/data5/SELLER/Default/2025/6/517664964/RS/OQ/HY/5730925/widma-hobgrind-hg-200-tool-grinding-machine-500x500.jpeg",
+  rx5neo: "https://5.imimg.com/data5/SELLER/Default/2025/6/517663753/FE/AX/JK/5730925/widma-ecogrind-rx5-neo-tool-grinding-machine-1000x1000.jpg",
   // Turning (Widma)
-  vtl:      "https://5.imimg.com/data5/SELLER/Default/2024/6/429587650/BY/IU/GP/5730925/vertical-turning-lathes-500x500.jpg",
-  vt550:    "https://5.imimg.com/data5/SELLER/Default/2025/6/517660190/SR/FA/AR/5730925/turrent-type-verticle-turning-lathes-500x500.jpg",
+  vtl: "https://5.imimg.com/data5/SELLER/Default/2024/6/429587650/BY/IU/GP/5730925/vertical-turning-lathes-500x500.jpg",
+  vt550: "https://5.imimg.com/data5/SELLER/Default/2025/6/517660190/SR/FA/AR/5730925/turrent-type-verticle-turning-lathes-500x500.jpg",
   // CAD/CAM Software (client-supplied artwork — Issue #3)
-  visi:       imgVisi,
-  worknc:     imgWorkNC,
-  edgecam:    imgEdgecam,
-  esprit:     imgEsprit,
+  visi: imgVisi,
+  worknc: imgWorkNC,
+  edgecam: imgEdgecam,
+  esprit: imgEsprit,
   espritEdge: imgEspritEdge,
   // CAE / Simulation + 3D Printers (client-supplied artwork — Issue #3)
   simufact: imgSimufact,
-  fti:      imgFTI,
-  go3dFdm:  imgGo3dFdm,
-  go3dResin:imgGo3dResin,
+  fti: imgFTI,
+  go3dFdm: imgGo3dFdm,
+  go3dResin: imgGo3dResin,
   // Special Purpose Machines (Widma) — hotlinked from widma.com CDN
   // TODO(client): download & self-host these in /public for long-term stability.
   spmRotaryIndex: "https://www.widma.com/wp-content/uploads/2022/01/Multi-operaton-rotary-indexing-1024x683-1.webp",
-  spmValveSeat:   "https://www.widma.com/wp-content/uploads/2022/01/Valve-Seat--1024x683.webp",
-  spmFineBoring:  "https://www.widma.com/wp-content/uploads/2022/01/Fine-boring-Machine-1024x683.png",
-  spmMultiSpindle:"https://www.widma.com/wp-content/uploads/2022/01/Multi-spindle-machine.webp",
-  spmFacingCenter:"https://www.widma.com/wp-content/uploads/2022/01/Facing-_-Centering-machine-1024x683.webp",
+  spmValveSeat: "https://www.widma.com/wp-content/uploads/2022/01/Valve-Seat--1024x683.webp",
+  spmFineBoring: "https://www.widma.com/wp-content/uploads/2022/01/Fine-boring-Machine-1024x683.png",
+  spmMultiSpindle: "https://www.widma.com/wp-content/uploads/2022/01/Multi-spindle-machine.webp",
+  spmFacingCenter: "https://www.widma.com/wp-content/uploads/2022/01/Facing-_-Centering-machine-1024x683.webp",
   spmSpecialMill: "https://www.widma.com/wp-content/uploads/2022/01/Special-Milling-machine.webp",
-  spmHeavyMill:   "https://www.widma.com/wp-content/uploads/2022/01/Heavy-Rough-Milling-machine-1024x683.webp",
-  spmFinishMill:  "https://www.widma.com/wp-content/uploads/2022/01/Finish-Milling-Machines.webp",
+  spmHeavyMill: "https://www.widma.com/wp-content/uploads/2022/01/Heavy-Rough-Milling-machine-1024x683.webp",
+  spmFinishMill: "https://www.widma.com/wp-content/uploads/2022/01/Finish-Milling-Machines.webp",
   // Deep Hole Drilling Machines (Widma)
-  dhdSG:  "https://www.widma.com/wp-content/uploads/2022/01/sg.webp",
-  dhdMG:  "https://www.widma.com/wp-content/uploads/2022/01/mg.webp",
+  dhdSG: "https://www.widma.com/wp-content/uploads/2022/01/sg.webp",
+  dhdMG: "https://www.widma.com/wp-content/uploads/2022/01/mg.webp",
   dhdUGK: "https://www.widma.com/wp-content/uploads/2022/01/ugk.webp",
   dhdBTA: "https://www.widma.com/wp-content/uploads/2022/01/bta.webp",
 };
@@ -101,12 +101,12 @@ const visi: Product = {
   description:
     "VISI is a world-leading PC-based CAD/CAE/CAM solution for the mould & die industry — covering 3D tool design, plastic flow analysis, stamping simulation, and multi-axis milling in a single integrated platform.",
   specs: {
-    "Type":     "CAD / CAE / CAM",
+    "Type": "CAD / CAE / CAM",
     "Platform": "Windows PC",
     "Industry": "Mould & Die",
-    "License":  "Lifetime, single-user",
+    "License": "Lifetime, single-user",
     "Training": "In-person support included",
-    "Demo":     "Free demo available",
+    "Demo": "Free demo available",
   },
   features: [
     "Full 3D mould & die design",
@@ -135,12 +135,12 @@ export const solidworks: Product = {
   description:
     "SOLIDWORKS has recently been added to the Goodmech portfolio and is an important strategic product for us. It covers part and assembly modelling, bills of materials and production drawings, in Standard, Professional and Premium packages — with Simulation, PDM, CAM and other capabilities available as separately licensed add-ons.",
   specs: {
-    "Type":     "3D CAD / Design Platform",
-    "Publisher":"Dassault Systèmes",
+    "Type": "3D CAD / Design Platform",
+    "Publisher": "Dassault Systèmes",
     "Packages": "Standard · Professional · Premium",
-    "Add-ons":  "Simulation, PDM, CAM, Electrical, MBD (licensed separately)",
+    "Add-ons": "Simulation, PDM, CAM, Electrical, MBD (licensed separately)",
     "Platform": "Windows PC",
-    "Demo":     "Free demo available",
+    "Demo": "Free demo available",
   },
   features: [
     "Single and multi-body part models, assemblies & BOMs",
@@ -166,13 +166,13 @@ export const CamSoftware: Product[] = [
     description:
       "WorkNC is a CAM system for mould, die and tooling work, built around automatic toolpath generation. Rest machining runs on a dynamic stock model with collision detection and automatic stock updates, and the Auto5 module converts proven 3-axis toolpaths into collision-free 5-axis ones.",
     specs: {
-      "Type":     "CAM Software",
-      "Publisher":"Hexagon Manufacturing Intelligence",
-      "Axes":     "2 to 5-axis (incl. Auto5 conversion)",
+      "Type": "CAM Software",
+      "Publisher": "Hexagon Manufacturing Intelligence",
+      "Axes": "2 to 5-axis (incl. Auto5 conversion)",
       "Platform": "Windows PC",
-      "License":  "Lifetime, single-user",
+      "License": "Lifetime, single-user",
       "Training": "In-person support included",
-      "Demo":     "Free demo available",
+      "Demo": "Free demo available",
     },
     features: [
       "2 to 5-axis automatic CNC programming",
@@ -196,12 +196,12 @@ export const CamSoftware: Product[] = [
     description:
       "Edgecam is a market-leading CAM system for NC part programming across turning, milling, and Wire EDM operations. Intuitive interface with powerful automation for complex parts.",
     specs: {
-      "Type":       "CAM Software",
-      "Version":    "2024.1",
+      "Type": "CAM Software",
+      "Version": "2024.1",
       "Operations": "Turning, Milling, Wire EDM",
-      "Platform":   "Windows PC",
-      "License":    "Lifetime, single-user",
-      "Demo":       "Free demo available",
+      "Platform": "Windows PC",
+      "License": "Lifetime, single-user",
+      "Demo": "Free demo available",
     },
     features: [
       "Turning, milling, and Wire EDM in one package",
@@ -224,12 +224,12 @@ export const CamSoftware: Product[] = [
     description:
       "Esprit is a comprehensive CAM solution supporting mill-turn, multitasking, and simultaneous 5-axis milling across diverse CNC machines. Backed by 3,500+ certified post processors for universal machine compatibility.",
     specs: {
-      "Type":            "CAM Software",
-      "Axes":            "2 to 5-axis simultaneous",
-      "Operations":      "Milling, Turning, Mill-Turn, Wire EDM",
+      "Type": "CAM Software",
+      "Axes": "2 to 5-axis simultaneous",
+      "Operations": "Milling, Turning, Mill-Turn, Wire EDM",
       "Post Processors": "3,500+ certified",
-      "License":         "Lifetime, single-user",
-      "Demo":            "Free demo available",
+      "License": "Lifetime, single-user",
+      "Demo": "Free demo available",
     },
     features: [
       "Simultaneous 5-axis milling programming",
@@ -252,12 +252,12 @@ export const CamSoftware: Product[] = [
     description:
       "Esprit EDGE is the next-generation evolution of Esprit — an intelligent, fully integrated CAM platform with AI-assisted toolpaths, a digital machine twin, and edge-to-cloud connectivity for the modern smart factory.",
     specs: {
-      "Type":         "CAM Software",
-      "Axes":         "2 to 5-axis simultaneous",
+      "Type": "CAM Software",
+      "Axes": "2 to 5-axis simultaneous",
       "Architecture": "Edge-to-cloud, AI-assisted",
-      "Operations":   "Milling, Turning, Mill-Turn, Additive",
-      "License":      "Subscription / perpetual",
-      "Demo":         "Free demo available",
+      "Operations": "Milling, Turning, Mill-Turn, Additive",
+      "License": "Subscription / perpetual",
+      "Demo": "Free demo available",
     },
     features: [
       "AI-optimised toolpath generation",
@@ -289,13 +289,13 @@ export const Simulation: Product[] = [
     description:
       "Simufact Forming applies finite-element and finite-volume simulation to forging, cold forming and rolling. It shows material flow, die loads and die stress, and gives early detection of underfill, folds, laps and cracks — before the tooling is cut. Hot and cold forging simulation is the capability Goodmech leads with in its CAE portfolio.",
     specs: {
-      "Type":      "Forming & Forging Process Simulation",
+      "Type": "Forming & Forging Process Simulation",
       "Publisher": "Cadence Design Systems",
       "Processes": "Forging, cold forming, sheet metal, rolling, mechanical joining",
-      "Solver":    "Finite element & finite volume method",
-      "Platform":  "Windows PC",
-      "License":   "Lifetime, single-user",
-      "Demo":      "Free demo available",
+      "Solver": "Finite element & finite volume method",
+      "Platform": "Windows PC",
+      "License": "Lifetime, single-user",
+      "Demo": "Free demo available",
     },
     features: [
       "Hot forging and cold forming in one platform",
@@ -318,11 +318,11 @@ export const Simulation: Product[] = [
     description:
       "FTI Forming Suite delivers fast, accurate sheet-metal forming simulation — from early feasibility and material cost estimation to blank development and die-face design — helping reduce material waste and tryout time.",
     specs: {
-      "Type":      "Sheet-Metal Simulation Software",
-      "Modules":   "FormingSuite, BlankWorks, CostOptimizer",
-      "Platform":  "Windows PC",
-      "License":   "Lifetime, single-user",
-      "Demo":      "Free demo available",
+      "Type": "Sheet-Metal Simulation Software",
+      "Modules": "FormingSuite, BlankWorks, CostOptimizer",
+      "Platform": "Windows PC",
+      "License": "Lifetime, single-user",
+      "Demo": "Free demo available",
     },
     features: [
       "Rapid formability & feasibility analysis",
@@ -348,11 +348,11 @@ export const QualityAnalysis: Product[] = [
     description:
       "Q-DAS is the industry standard for statistical quality analysis (SPC). It collects, evaluates, and reports measurement data across the production process — enabling data-driven quality control and full traceability.",
     specs: {
-      "Type":      "Quality Data Analysis Software",
-      "Methods":   "SPC, capability & measurement-system analysis",
-      "Platform":  "Windows PC",
-      "License":   "Lifetime, single-user",
-      "Demo":      "Free demo available",
+      "Type": "Quality Data Analysis Software",
+      "Methods": "SPC, capability & measurement-system analysis",
+      "Platform": "Windows PC",
+      "License": "Lifetime, single-user",
+      "Demo": "Free demo available",
     },
     features: [
       "Statistical process control (SPC)",
@@ -379,14 +379,14 @@ export const GrindingMachines: Product[] = [
     description:
       "Universal automatic 5-axis CNC tool & cutter grinder for end mills, drills, reamers, and special cutting tools. Handles workpiece ODs from 20 mm to 230 mm.",
     specs: {
-      "CNC Axes":          "5",
-      "Type":              "Universal tool & cutter grinder",
-      "Minimum OD":        "20 mm",
-      "Maximum OD":        "230 mm",
+      "CNC Axes": "5",
+      "Type": "Universal tool & cutter grinder",
+      "Minimum OD": "20 mm",
+      "Maximum OD": "230 mm",
       "Max Spindle Speed": "9,000 RPM",
-      "Electrical Power":  "15 kVA",
-      "Machine Weight":    "4,500 kg",
-      "Floor Plan (W×D×H)":"2,450 × 2,950 × 2,150 mm",
+      "Electrical Power": "15 kVA",
+      "Machine Weight": "4,500 kg",
+      "Floor Plan (W×D×H)": "2,450 × 2,950 × 2,150 mm",
     },
     features: [
       "5 fully simultaneous CNC axes",
@@ -409,13 +409,13 @@ export const GrindingMachines: Product[] = [
     description:
       "Advanced 5-axis CNC tool grinding machine with compact footprint and heavy 6,500 kg machine base for vibration-free, ultra-precise tool production.",
     specs: {
-      "Model":             "Ecogrind RX5 NEO",
+      "Model": "Ecogrind RX5 NEO",
       "XY Axis Work Area": "300 × 300 mm",
-      "Electrical Power":  "15 kVA",
-      "Air Pressure":      "5 Bar",
-      "Machine Weight":    "6,500 kg",
-      "Floor Plan (W×D×H)":"2,150 × 3,000 × 2,200 mm",
-      "Brand":             "Widma",
+      "Electrical Power": "15 kVA",
+      "Air Pressure": "5 Bar",
+      "Machine Weight": "6,500 kg",
+      "Floor Plan (W×D×H)": "2,150 × 3,000 × 2,200 mm",
+      "Brand": "Widma",
     },
     features: [
       "5-axis simultaneous grinding",
@@ -443,11 +443,11 @@ export const TurningMachines: Product[] = [
     description:
       "Widma vertical turning lathes handle very large-diameter, heavy workpieces — up to 4,000 mm — that are difficult to chuck horizontally. Made in India, ideal for discs, flanges, and large bearing housings.",
     specs: {
-      "Type":              "Vertical Turning Lathe (VTL)",
-      "Table Diameter":    "up to 4,000 mm",
-      "Max Turning Dia.":  "up to 4,000 mm",
+      "Type": "Vertical Turning Lathe (VTL)",
+      "Table Diameter": "up to 4,000 mm",
+      "Max Turning Dia.": "up to 4,000 mm",
       "Country of Origin": "Made in India",
-      "Brand":             "Widma",
+      "Brand": "Widma",
     },
     features: [
       "Workpiece capacity up to 4,000 mm diameter",
@@ -468,13 +468,13 @@ export const TurningMachines: Product[] = [
     description:
       "The VT550 is a vertical turning lathe for precision machining of medium-to-large components. Compact design with low table height and rigid cast-iron construction for stable, high-precision performance.",
     specs: {
-      "Max Turning Dia.":   "550 mm",
-      "Std Turning Dia.":   "450 mm",
-      "Swing Over Bed":     "650 mm",
+      "Max Turning Dia.": "550 mm",
+      "Std Turning Dia.": "450 mm",
+      "Swing Over Bed": "650 mm",
       "Max Turning Height": "700 mm",
-      "Power":              "22 kW",
-      "Turret Type":        "Electro-mechanical",
-      "Model":              "VT550",
+      "Power": "22 kW",
+      "Turret Type": "Electro-mechanical",
+      "Model": "VT550",
     },
     features: [
       "Compact design with low table height for easy loading",
@@ -504,10 +504,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Rotary indexing machines designed for simultaneous execution of multiple operations — drilling, tapping, rough boring, fine boring, spot facing, and reaming — in a single automated cycle.",
     specs: {
-      "Type":          "Rotary indexing SPM",
-      "Operations":    "Drilling, tapping, boring, spot facing, reaming",
+      "Type": "Rotary indexing SPM",
+      "Operations": "Drilling, tapping, boring, spot facing, reaming",
       "Configuration": "Multi-station rotary index",
-      "Brand":         "Widma",
+      "Brand": "Widma",
     },
     features: [
       "Multiple operations in one indexing cycle",
@@ -528,10 +528,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Purpose-built machines for accurate machining of valve seat profiles and valve guide reaming on engine cylinder heads, delivering the concentricity and finish critical to engine performance.",
     specs: {
-      "Type":          "Valve seat / guide SPM",
-      "Application":   "Engine cylinder heads",
+      "Type": "Valve seat / guide SPM",
+      "Application": "Engine cylinder heads",
       "Configuration": "Custom-engineered to head geometry",
-      "Brand":         "Widma",
+      "Brand": "Widma",
     },
     features: [
       "Accurate valve seat profile machining",
@@ -552,10 +552,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Fine boring machines available in vertical and horizontal configurations with single or multiple spindles, offering tool correction down to 1-micron diameter accuracy for precision bores.",
     specs: {
-      "Type":          "Fine boring SPM",
+      "Type": "Fine boring SPM",
       "Configuration": "Vertical / horizontal, single or multi-spindle",
-      "Tool Correction":"Up to 1-micron diameter accuracy",
-      "Brand":         "Widma",
+      "Tool Correction": "Up to 1-micron diameter accuracy",
+      "Brand": "Widma",
     },
     features: [
       "Vertical and horizontal configurations",
@@ -577,10 +577,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Multi-spindle machines perform multiple operations simultaneously to deliver best-in-class cycle times, available in both horizontal and vertical configurations.",
     specs: {
-      "Type":          "Multi-spindle SPM",
+      "Type": "Multi-spindle SPM",
       "Configuration": "Horizontal / vertical",
-      "Advantage":     "Best-in-class cycle time",
-      "Brand":         "Widma",
+      "Advantage": "Best-in-class cycle time",
+      "Brand": "Widma",
     },
     features: [
       "Multiple spindles working simultaneously",
@@ -601,10 +601,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Facing and centering machines for shaft manufacturing, available in vertical and horizontal configurations — two-spindle variants for smaller shafts and four-spindle for larger-diameter shafts.",
     specs: {
-      "Type":          "Facing & centering SPM",
+      "Type": "Facing & centering SPM",
       "Configuration": "Vertical / horizontal, 2 or 4 spindle",
-      "Application":   "Shaft ends preparation",
-      "Brand":         "Widma",
+      "Application": "Shaft ends preparation",
+      "Brand": "Widma",
     },
     features: [
       "Two-spindle for smaller shafts",
@@ -625,10 +625,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Special milling machines with multi-axis movement and interpolation for cam lobe milling, profile milling, keyway, groove, slot, and pad milling operations.",
     specs: {
-      "Type":          "Special milling SPM",
-      "Motion":        "Multi-axis movement & interpolation",
-      "Operations":    "Cam lobe, profile, keyway, groove, slot, pad",
-      "Brand":         "Widma",
+      "Type": "Special milling SPM",
+      "Motion": "Multi-axis movement & interpolation",
+      "Operations": "Cam lobe, profile, keyway, groove, slot, pad",
+      "Brand": "Widma",
     },
     features: [
       "Multi-axis movement and interpolation",
@@ -649,10 +649,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Heavy milling and roughing machines built for high material removal rates at high depth of cut, using a spindle with gearbox to deliver the cutting torque and power required.",
     specs: {
-      "Type":          "Heavy milling / roughing SPM",
-      "Spindle":       "Geared spindle for high torque",
-      "Capability":    "High MRR at high depth of cut",
-      "Brand":         "Widma",
+      "Type": "Heavy milling / roughing SPM",
+      "Spindle": "Geared spindle for high torque",
+      "Capability": "High MRR at high depth of cut",
+      "Brand": "Widma",
     },
     features: [
       "High material removal rate",
@@ -673,10 +673,10 @@ export const SpecialPurposeMachines: Product[] = [
     description:
       "Finish milling machines designed to achieve critical accuracies like flatness, surface finish, and milling depth, available in horizontal or vertical configurations.",
     specs: {
-      "Type":          "Finish milling SPM",
+      "Type": "Finish milling SPM",
       "Configuration": "Horizontal / vertical",
-      "Focus":         "Flatness, surface finish, milling depth",
-      "Brand":         "Widma",
+      "Focus": "Flatness, surface finish, milling depth",
+      "Brand": "Widma",
     },
     features: [
       "Critical flatness accuracy",
@@ -704,10 +704,10 @@ export const DeepHoleDrillingMachines: Product[] = [
     description:
       "The SG series standard gundrilling machines produce deep, straight, high-accuracy holes across a broad range of general deep-hole drilling applications.",
     specs: {
-      "Type":          "Standard gundrilling machine",
-      "Series":        "SG",
-      "Process":       "Single-flute gundrilling",
-      "Brand":         "Widma",
+      "Type": "Standard gundrilling machine",
+      "Series": "SG",
+      "Process": "Single-flute gundrilling",
+      "Brand": "Widma",
     },
     features: [
       "Deep, straight hole drilling",
@@ -728,10 +728,10 @@ export const DeepHoleDrillingMachines: Product[] = [
     description:
       "The MG series micro gundrilling machine caters to smaller-diameter deep hole drilling applications where fine, precise holes are required.",
     specs: {
-      "Type":          "Micro gundrilling machine",
-      "Series":        "MG",
-      "Application":   "Smaller-diameter deep holes",
-      "Brand":         "Widma",
+      "Type": "Micro gundrilling machine",
+      "Series": "MG",
+      "Application": "Smaller-diameter deep holes",
+      "Brand": "Widma",
     },
     features: [
       "Small-diameter deep hole drilling",
@@ -752,10 +752,10 @@ export const DeepHoleDrillingMachines: Product[] = [
     description:
       "The UGK series universal gundrilling machines offer flexible deep-hole drilling across a wide range of workpiece sizes and applications in a single versatile platform.",
     specs: {
-      "Type":          "Universal gundrilling machine",
-      "Series":        "UGK",
-      "Capability":    "Wide workpiece range",
-      "Brand":         "Widma",
+      "Type": "Universal gundrilling machine",
+      "Series": "UGK",
+      "Capability": "Wide workpiece range",
+      "Brand": "Widma",
     },
     features: [
       "Versatile universal configuration",
@@ -776,10 +776,10 @@ export const DeepHoleDrillingMachines: Product[] = [
     description:
       "Dedicated BTA counter boring machines for front fork tubes, using the BTA process to produce accurate, high-finish internal bores for two-wheeler front-fork applications.",
     specs: {
-      "Type":          "BTA counter boring machine",
-      "Process":       "BTA (Boring & Trepanning Association)",
-      "Application":   "Front fork tubes",
-      "Brand":         "Widma",
+      "Type": "BTA counter boring machine",
+      "Process": "BTA (Boring & Trepanning Association)",
+      "Application": "Front fork tubes",
+      "Brand": "Widma",
     },
     features: [
       "BTA deep-hole counter boring",
@@ -805,9 +805,9 @@ export const Printers3D: Product[] = [
     description:
       "The Go3D industrial FDM 3D printer produces strong, accurate functional prototypes and end-use parts from engineering-grade thermoplastics — bringing fast, in-house additive manufacturing to the shop floor.",
     specs: {
-      "Technology":   "FDM / FFF",
-      "Build Volume": "300 × 300 × 400 mm",
-      "Materials":    "ABS, PLA, PETG, Nylon, carbon-filled",
+      "Technology": "FDM / FFF",
+      "Build Volume": "300 × 1200 (mm)",
+      "Materials": "ABS, PLA, PETG, Nylon, carbon-filled",
       "Layer Height": "from 0.05 mm",
       "Connectivity": "USB / LAN / Wi-Fi",
     },
@@ -832,9 +832,9 @@ export const Printers3D: Product[] = [
     description:
       "The Go3D resin 3D printer delivers ultra-fine surface finish and crisp detail for precision prototypes, master patterns, and intricate components using SLA/DLP photopolymer technology.",
     specs: {
-      "Technology":   "SLA / DLP resin",
+      "Technology": "SLA / DLP resin",
       "Build Volume": "192 × 120 × 200 mm",
-      "Materials":    "Standard, tough & castable resins",
+      "Materials": "Standard, tough & castable resins",
       "Layer Height": "from 0.025 mm",
       "Connectivity": "USB / LAN / Wi-Fi",
     },

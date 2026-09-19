@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../data/products';
 import { BrandTile } from './BrandTile';
+import { VendorLogo } from './VendorLogo';
 
 export interface ShowcaseCategory {
   id: string;
@@ -142,7 +143,9 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ eyebrow, categ
                   <div className="md:w-1/2 flex flex-col">
                     <h2 className="text-headline-md font-headline-md text-on-surface">{product.name}</h2>
                     {product.vendor && (
-                      <p className="font-label-caps text-on-surface-variant/70 mt-1.5">BY {product.vendor.toUpperCase()}</p>
+                      <div className="mt-2">
+                        <VendorLogo vendor={product.vendor} />
+                      </div>
                     )}
                     <p className="text-body-sm font-body-sm text-on-surface-variant mt-2 mb-5">
                       {product.shortDesc || product.description}

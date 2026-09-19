@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { HeroProduct } from '../data/heroProducts';
 import { companyInfo } from '../data/company';
 import { BrandTile } from './BrandTile';
+import { VendorLogo } from './VendorLogo';
 
 /**
  * Dedicated page layout for a HERO product. Deliberately heavier than the
@@ -50,9 +51,10 @@ export const HeroProductPage: React.FC<{ product: HeroProduct }> = ({ product })
               <p className="anim-in text-headline-md font-headline-md text-white/90 mb-2" style={{ animationDelay: '180ms' }}>
                 {product.discipline}
               </p>
-              <p className="anim-in font-label-caps text-white/40 mb-8" style={{ animationDelay: '200ms' }}>
-                BY {product.vendor.toUpperCase()} · SUPPLIED &amp; SUPPORTED BY GOODMECH
-              </p>
+              <div className="anim-in flex flex-wrap items-center gap-x-4 gap-y-2 mb-8" style={{ animationDelay: '200ms' }}>
+                <VendorLogo vendor={product.vendor} plate />
+                <span className="font-label-caps text-white/40">SUPPLIED &amp; SUPPORTED BY GOODMECH</span>
+              </div>
 
               <p className="anim-in text-body-lg font-body-lg text-white/75 max-w-2xl mb-9" style={{ animationDelay: '260ms' }}>
                 {product.summary}
